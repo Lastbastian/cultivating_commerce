@@ -11,39 +11,70 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141127235817) do
+ActiveRecord::Schema.define(version: 20141129002841) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "items", force: true do |t|
-    t.string   "name"
-    t.integer  "storefront_id"
+    t.string   "kind"
+    t.string   "category"
+    t.integer  "listing_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "storefronts", force: true do |t|
+  create_table "listings", force: true do |t|
+    t.string   "title"
     t.string   "description"
-    t.string   "name"
-    t.integer  "seller_id"
+    t.string   "desired"
+    t.string   "quantity"
+    t.string   "image"
+    t.boolean  "active"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "transactions", force: true do |t|
-    t.integer  "buyer_id"
-    t.integer  "seller_id"
+  create_table "meetups", force: true do |t|
+    t.string   "address_line_1"
+    t.string   "city"
+    t.string   "zipcode"
+    t.date     "date"
+    t.string   "time"
+    t.string   "title"
+    t.string   "description"
+    t.string   "image"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "meetups_hosts", force: true do |t|
+    t.integer  "host_id"
+    t.integer  "meetup_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "meetups_participants", force: true do |t|
+    t.integer  "participant_id"
+    t.integer  "meetup_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|
-    t.string   "type"
-    t.string   "last_name"
     t.string   "first_name"
+    t.string   "last_name"
+    t.string   "user_name"
     t.string   "email"
+    t.string   "address_line_1"
+    t.string   "zipcode"
+    t.string   "about"
+    t.string   "user_img"
     t.string   "phone"
+    t.boolean  "private_contact"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
