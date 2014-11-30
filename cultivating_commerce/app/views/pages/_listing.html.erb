@@ -1,9 +1,8 @@
 <li class="listing">
   <div class="type-icon"> Icon</div>
   <div class="listing-front">
-    <img class="listing-img" src="http://i2.kym-cdn.com/entries/icons/original/000/000/184/Spaghetti_cat.JPG"> <!--large image of product -->
-    <img class="user-img-s"src=""> <!--small image of user -->
-
+    <%= image_tag l.image, alt: "listing-image", class: "listing-img" %> <!--large image of product -->    
+    <%= image_tag l.user.user_img, alt: "usr-image", class:"user-img-s"  %> <!--small image of user -->
     
     <h3><%= l.title %></h3>
     <p><%= l.description %></p>
