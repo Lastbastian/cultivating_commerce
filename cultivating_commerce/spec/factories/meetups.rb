@@ -1,6 +1,6 @@
 FactoryGirl.define do
-  factory :meetup do
-    
+  factory :event do
+
   end
 
 end

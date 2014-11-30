@@ -1,6 +1,6 @@
-class CreateMeetups < ActiveRecord::Migration
+class CreateEvents < ActiveRecord::Migration
   def change
-    create_table :meetups do |t|
+    create_table :events do |t|
       t.string :address_line_1
       t.string :city
       t.string :zipcode
@@ -9,7 +9,7 @@ class CreateMeetups < ActiveRecord::Migration
       t.string :title
       t.string :description
       t.string :image
-      
+
       t.references :user
 
       t.timestamps
