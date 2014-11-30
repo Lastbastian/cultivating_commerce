@@ -12,3 +12,109 @@
     <%= e.title %>
   <% end %>
 <% end %>
+
+
+<header>
+	<div class="nav-bar">
+		<h1 class="logo">Cultivated Commerce</h1>
+		<div class="nav-right">
+			<h3>User Name</h3>
+			<a href="">Sign-out</a>
+		</div>
+		<div>
+			<img class="user-img-s" src="">
+		</div>
+	</div>
+	<div class="nav-sub">
+		<a href="">Back to dashboard</a>
+	</div>
+</header>
+
+<section class="user">
+	<div class="user-info">
+		<div><a href="">Edit</a></div>
+		<img class="user-img" src="">
+		<h3> User Name</h3>
+		<p>Here is going to go the profile of the user where he or she is going to type information about themselves and it will be displayed on their profile page.</p>
+	</div>
+	<div>
+		<a href="">Contact</a>
+		<a href="">Delete Contact</a>
+	</div>
+
+	<div>
+		<h3>My exchanges</h3>
+		<a href="">Create an exchange</a>
+		<ul class="exchanges">
+			<li class="exchange">
+				<div class="map-icon">Icon</div>
+				<h2>Exchange Name</h2>
+				<p>Address for exchange line 1</p>
+				<p>Address for exchange line 2</p>
+				<p>9AM-2PM every sunday</p>
+				<a href="">cancel</a>
+				<a href="">edit</a>
+			</li>
+		</ul>
+	</div>
+
+	<div>
+		<h3>Exchanges I Attend</h3>
+		<ul class="exchanges">
+			<li class="exchange">
+				<div class="map-icon">Icon</div>
+				<h2>Exchange Name</h2>
+				<p>Address for exchange line 1</p>
+				<p>Address for exchange line 2</p>
+				<p><span>9AM-2PM</span> every sunday</p>
+				<a href="">unattend exchange</a>
+			</li>
+		</ul>
+	</div>
+</section>
+
+<section class="listings">
+	<div><a href="">Add a product</a></div>
+		<div>
+			<ul class="type-icons">
+				<li type="type-icon">Icon</li><!--  ITERATE OVER LIST ONCE DOING AJAX CALL  -->
+			</ul>
+			<form class="listing-form" action="/" type="post">
+				<img src="">
+				<input type="text" name="Title" value="Listing Title">
+				<input type="text" name="Description" value="Add description">
+				<input type="text" name="Quantity" value="Example: 4lbs">
+				<input type="button" value="Submit">
+				<select>
+					<option value="type">Type 1</option>
+					<option value="type">Type 2</option>
+					<option value="type">Type 3</option>
+					<option value="type">Type 4</option>
+					<option value="type">Type 5</option>
+					<option value="type">Type 6</option>
+					<option value="type">Type 17</option>
+				</select>
+			</form>
+		</div>	
+	</div>
+	<ul class="listings">
+		<li class="listing">
+			<div class="type-icon"> Icon</div>
+			<div class="listing-front">
+				<img class="listing-img" src="http://i2.kym-cdn.com/entries/icons/original/000/000/184/Spaghetti_cat.JPG">
+				<h3>Listing.Title</h3>
+				<p>Here is going to go the description for the listing in which farmers can get fancy tickling their growing fancy.</p>
+				<p>Quantity: 20 oranges</p>
+				<a href="">edit</a><!--  This flips div into listing-edit-options -->
+			</div>
+			<div class="listing-back"> <!-- On flip, hides div-icon -->
+				<a href="">Edit</a>
+				<a href="">Delete</a>
+				<!-- <a href="">Deactive</a> --> 
+			</div>
+		</li>
+	</ul>
+</section>
+
+
+
