@@ -1,15 +1,15 @@
 class CreateParticipants < ActiveRecord::Migration
   def change
-    create_table :meetups_participants do |t|
+    create_table :events_participants do |t|
       t.integer :participant_id
-      t.references :meetup
+      t.references :event
 
       t.timestamps
     end
 
-    create_table :meetups_hosts do |t|
+    create_table :events_hosts do |t|
       t.integer :host_id
-      t.references :meetup
+      t.references :event
 
       t.timestamps
     end

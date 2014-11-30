@@ -11,10 +11,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141129190932) do
+
+ActiveRecord::Schema.define(version: 20141129193706) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "events", force: true do |t|
+    t.string   "address_line_1"
+    t.string   "city"
+    t.string   "zipcode"
+    t.date     "date"
+    t.string   "time"
+    t.string   "title"
+    t.string   "description"
+    t.string   "image"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "events_hosts", force: true do |t|
+    t.integer  "host_id"
+    t.integer  "event_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "events_participants", force: true do |t|
+    t.integer  "participant_id"
+    t.integer  "event_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "items", force: true do |t|
     t.string   "kind"
@@ -32,34 +61,6 @@ ActiveRecord::Schema.define(version: 20141129190932) do
     t.string   "image"
     t.boolean  "active"
     t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "meetups", force: true do |t|
-    t.string   "address_line_1"
-    t.string   "city"
-    t.string   "zipcode"
-    t.date     "date"
-    t.string   "time"
-    t.string   "title"
-    t.string   "description"
-    t.string   "image"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "meetups_hosts", force: true do |t|
-    t.integer  "host_id"
-    t.integer  "meetup_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "meetups_participants", force: true do |t|
-    t.integer  "participant_id"
-    t.integer  "meetup_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
