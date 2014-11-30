@@ -7,13 +7,13 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-v1 = User.create!(first_name:'Chris', last_name:'Bastian', user_name:'chrisb', email:'peacethrubeats@gmail.com',address_line_1:'277A Duncan st.', zipcode:'94131', about:'', phone:'510-717-7373', private_contact: true, user_img:'', user_img:Faker::Avatar.image, password:'12345678', password_confirmation:'12345678')
-v2 = User.create!(first_name:'Osman', last_name:'Afridi', user_name:'osmana', email: 'osmanisalso@gmail.com', address_line_1:'', zipcode:'', about:'', phone:'(510) 447-3200', private_contact: true, user_img:'', user_img: Faker::Avatar.image, password:'12345678', password_confirmation:'12345678')
-v3 = User.create!(first_name:'Marlon', last_name:'Frausto', user_name:'marlonf', email:'marlonjfrausto@gmail.com',  address_line_1:'', zipcode:'', about:'', phone:'(619) 373-6451', private_contact: true, user_img:'', user_img: Faker::Avatar.image,password:'12345678', password_confirmation:'12345678')
-v4 = User.create!(first_name:'Chritine', last_name:'Vallaure', user_name:'christinev', email: 'christinevallaure@gmail.com',address_line_1:'', zipcode:'', about:'', phone:'555-555-5555', private_contact: true, user_img: Faker::Avatar.image, password:'12345678', password_confirmation:'12345678')
+v1 = User.create(first_name:'Chris', last_name:'Bastian', user_name:'chrisb', email:'peacethrubeats@gmail.com',address_line_1:'277A Duncan st.', zipcode:'94131', about:'', phone:'510-717-7373', private_contact: true, user_img:'', user_img:'',password:'12345678',password_confirmation:'12345678')
+v2 = User.create(first_name:'Osman', last_name:'Afridi', user_name:'osmana', email: 'osmanisalso@gmail.com', address_line_1:'', zipcode:'', about:'', phone:'(510) 447-3200', private_contact: true, user_img:'', user_img:'',password:'12345678',password_confirmation:'12345678')
+v3 = User.create(first_name:'Marlon', last_name:'Frausto', user_name:'marlonf', email:'marlonjfrausto@gmail.com',  address_line_1:'', zipcode:'', about:'', phone:'(619) 373-6451', private_contact: true, user_img:'', user_img:'',password:'12345678',password_confirmation:'12345678')
+v4 = User.create(first_name:'Chritine', last_name:'Vallaure', user_name:'christinev', email: 'christinevallaure@gmail.com',address_line_1:'', zipcode:'', about:'', phone:'555-555-5555', private_contact: true, user_img:'',password:'12345678',password_confirmation:'12345678')
 
 10.times do
-  User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, user_name: Faker::Internet.user_name, email: Faker::Internet.email, address_line_1: Faker::Address.street_name, zipcode: Faker::Address.zip_code, about: Faker::Lorem.paragraph, phone:Faker::PhoneNumber.phone_number, private_contact: false, user_img: Faker::Avatar.image,password:'12345678', password_confirmation:'12345678')
+  User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, user_name:Faker::Internet.user_name, email: Faker::Internet.email, address_line_1: Faker::Address.street_name, zipcode: Faker::Address.zip_code, about: Faker::Lorem.paragraph, phone:Faker::PhoneNumber.phone_number, private_contact: false, user_img: Faker::Avatar.image,password:'12345678',password_confirmation:'12345678')
 end
 
 v1.listings.create(title:'Eggs',description:'Eggs from my city chickens',desired:'apple',quantity:'3 dozen',image:'',active:true)
@@ -25,7 +25,7 @@ v3.listings.create(title:'Vine Tomatoes',description:'Extra large. Extra tasty.'
 v4.listings.create(title:'Honey',description:'I have a small behive up north and I bring back honey to trade.',desired:'Oranges',quantity:'30 jars',image:'',active:true)
 v4.listings.create(title:'Avocados',description:'Haas avocados',desired:'Eggs',quantity:'40',image:'',active:true)
 
-Item.create(kind:'kind1',category:'', listing_id:'')
+Item.create(kind:'',category:'')
 
 v1.events.create(address_line_1:'590 Dolores St', city: 'San Francisco', zipcode:'94110', date:'12/13/14', time:'9am - 1pm',title:'Delores Park exchange', description:'', image:'')
 v1.events.create(address_line_1:'1089 Fulton St', city: 'San Francisco', zipcode:'94117', date:'12/20/14', time:'9am - 1pm',title:'Alamo Square Park exchange', description:'I will be setting up a table and canopy.  Join in if you want.', image:'')
@@ -44,15 +44,10 @@ EventsHost.create(host_id:4, event_id:6)
 
 EventsParticipant.create(participant_id:1, event_id:4)
 EventsParticipant.create(participant_id:2, event_id:3)
-EventsParticipant.create(participant_id:3, event_id:3)
+EventsParticipant.create(participant_id:3, event_id:2)
 EventsParticipant.create(participant_id:4, event_id:1)
-EventsParticipant.create(participant_id:5, event_id:1)
-EventsParticipant.create(participant_id:6, event_id:1)
-EventsParticipant.create(participant_id:5, event_id:2)
-EventsParticipant.create(participant_id:5, event_id:3)
-EventsParticipant.create(participant_id:7, event_id:4)
-EventsParticipant.create(participant_id:8, event_id:4)
-EventsParticipant.create(participant_id:9, event_id:4)
+EventsParticipant.create(participant_id:4, event_id:5)
 EventsParticipant.create(participant_id:5, event_id:5)
-EventsParticipant.create(participant_id:10, event_id:6)
-EventsParticipant.create(participant_id:11, event_id:6)
+EventsParticipant.create(participant_id:6, event_id:6)
+EventsParticipant.create(participant_id:1, event_id:6)
+EventsParticipant.create(participant_id:2, event_id:6)

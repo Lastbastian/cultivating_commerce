@@ -1,89 +1,87 @@
-<% if user_signed_in? %>
-  <p>Welcome <%= current_user.email %></p>
-  <%= link_to 'Logged In [click to logout]', destroy_user_session_path, :method => :delete %>
-<% else %>
-  <p>You are not signed in.</p>
-  <%= link_to 'Login', new_user_session_path %>
-<% end %>
+<div class="container-fluid debugger">
 
-<header>
-	<div class="nav-bar">
-		<h1 class="logo">Cultivated Commerce</h1>
-		<div class="nav-right">
-			<h3>User Name</h3>
-			<a href="">Sign-out</a>
+	<header class="debugger">
+		<div class="nav-bar">
+			<h1 class="logo">Cultivated Commerce</h1>
+			<div class="nav-right">
+				<h3>User Name</h3>
+				<a href="">Sign-out</a>
+			</div>
+			<div>
+				<img class="user-img-s" src="">
+			</div>
 		</div>
+	</header>
+
+	<section class="map col-md-5 debugger">
 		<div>
-			<img class="user-img-s" src="">
+			<a href="">Add location</a>
 		</div>
-	</div>
-</header>
+		<div class="googlemap">
+			<iframe
+			src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d50457.15380196072!2d-122.36215482530719!3d37.77663006075536!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80859a6d00690021%3A0x4a501367f076adff!2sSan+Francisco%2C+CA!5e0!3m2!1sen!2sus!4v1417302995695" width="100%" height="450" frameborder="0" style="border:0">
+			</iframe>
+		</div>
+	</section>
 
-<section class="map">
-	<div>
-		<a href="">Add location</a>
-	</div>
-	<div class="googlemap">
-		<iframe 
-			src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d50457.15380196072!2d-122.36215482530719!3d37.77663006075536!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80859a6d00690021%3A0x4a501367f076adff!2sSan+Francisco%2C+CA!5e0!3m2!1sen!2sus!4v1417302995695" width="600" height="450" frameborder="0" style="border:0">
-		</iframe>
-	</div>
-</section>
+	<div class="col-md-7 debugger"> <!-- position right part -->
 
-<section class="filters">
-	<div class="filter-days">
-		<ul class="days">
-			<li class="day">gathering-day</li>
-		</ul>
-	</div>
-	<div class="filter-type">
-		<ul class="type-icons">
-			<li class="type-icon">gathering-type</li>
-		</ul>		
-	</div>
-	<div class="filter-search">
-		<form class="search-form" action="/" type="post">
-				<input type="text" name="Title" value="Search Listings">
-				<input type="button" value="Submit">
-		</form>
-	</div>
-</section>
-
-<section class="listings-section">
-	<div><a href="">Add a product</a></div>
-	<ul class="listings">
-		<li class="listing">
-			<div class="type-icon"> Icon</div>
-			<div class="listing-front">
-				<img class="listing-img" src="http://i2.kym-cdn.com/entries/icons/original/000/000/184/Spaghetti_cat.JPG"> <!--large image of product -->
-				<img class="user-img-s"src=""> <!--small image of user -->
-
-				<h3>Listing.Title</h3>
-				<p>Here is going to go the description for the listing in which farmers can get fancy tickling their growing fancy.</p>
-				<p>Quantity: 20 oranges</p>
-				<a href="">show meetups</a><!--  This flips div into displaying meetups -->
+		<section class="filters debugger">
+			<div class="filter-days">
+				<ul class="days">
+					<li class="day">gathering-day</li>
+				</ul>
 			</div>
-			<div class="listing-events"> <!-- On flip, hides div-icon -->
-				<div class="listing-event">
-					<h3><span class="map-icon">Icon</span>Gathering Title</h3>
-					<p>Address line 1</p>
-					<p>Address line 2</p>
-					<p><span>9:00AM-2:00PM</span>Date of event</p>
-					<a href="">Join Gathering</a>
-				</div>
-				<div class="listing-event">
-					<h3><span class="map-icon">Icon</span>Gathering Title</h3>
-					<p>Address line 1</p>
-					<p>Address line 2</p>
-					<p><span>9:00AM-2:00PM</span>Date of event</p>
-					<a href="">Join Gathering</a>
-				</div>
+			<div class="filter-type">
+				<ul class="type-icons">
+					<li class="type-icon">gathering-type</li>
+				</ul>
 			</div>
-		</li>
-	</ul>
-		
-	</div>
-</section>
+			<div class="filter-search">
+				<form class="search-form" action="/" type="post">
+					<input type="text" name="Title" value="Search Listings">
+					<input type="button" value="Submit">
+				</form>
+			</div>
+		</section>
+
+		<section class="listings-section debugger">
+			<div><a href="">Add a product</a></div>
+				<ul class="listings">
+					<li class="listing">
+						<div class="type-icon"> Icon</div>
+						<div class="listing-front">
+							<img class="listing-img" src="http://i2.kym-cdn.com/entries/icons/original/000/000/184/Spaghetti_cat.JPG"> <!--large image of product -->
+							<img class="user-img-s"src=""> <!--small image of user -->
+
+							<h3>Listing.Title</h3>
+							<p>Here is going to go the description for the listing in which farmers can get fancy tickling their growing fancy.</p>
+							<p>Quantity: 20 oranges</p>
+							<a href="">show meetups</a><!--  This flips div into displaying meetups -->
+						</div>
+						<div class="listing-events"> <!-- On flip, hides div-icon -->
+							<div class="listing-event">
+								<h3><span class="map-icon">Icon</span>Gathering Title</h3>
+								<p>Address line 1</p>
+								<p>Address line 2</p>
+								<p><span>9:00AM-2:00PM</span>Date of event</p>
+								<a href="">Join Gathering</a>
+							</div>
+							<div class="listing-event">
+								<h3><span class="map-icon">Icon</span>Gathering Title</h3>
+								<p>Address line 1</p>
+								<p>Address line 2</p>
+								<p><span>9:00AM-2:00PM</span>Date of event</p>
+								<a href="">Join Gathering</a>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</section>
+
+	</div> <!-- end of right container-->
+</div> <!-- end of container -->
 
 
 
