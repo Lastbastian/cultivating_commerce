@@ -17,13 +17,13 @@ v4 = User.create!(first_name:'Chritine', last_name:'Vallaure', user_name:'christ
 end
 
 v1.listings.create(title:'Eggs',description:'Eggs from my city chickens',desired:'apple',quantity:'3 dozen',image:'',active:true)
-v1.listings.create(title:'Oranges',description:'From my two orange trees. Large size.',desired:'Lemons',quantity:'3 dozen',image:'',active:true, user_id:1)
-v2.listings.create(title:'Meyer Lemons',description:'So many lemons for trade.',desired:'Avocado',quantity:'100',image:'',active:true, user_id:2)
-v3.listings.create(title:'Persimmons',description:'From my tree',desired:'Eggs',quantity:'30',image:'',active:true,user_id:3)
-v3.listings.create(title:'Heirloom Tomatoes',description:'I have as many as I need. The rest are for trade.',desired:'Eggs',quantity:'50',image:'',active:true, user_id:3)
-v3.listings.create(title:'Vine Tomatoes',description:'Extra large. Extra tasty.',desired:'Avocado',quantity:'20',image:'',active:true, user_id:3)
-v4.listings.create(title:'Honey',description:'I have a small behive up north and I bring back honey to trade.',desired:'Oranges',quantity:'30 jars',image:'',active:true, user_id:4)
-v4.listings.create(title:'Avocados',description:'Haas avocados',desired:'Eggs',quantity:'40',image:'',active:true, user_id:4)
+v1.listings.create(title:'Oranges',description:'From my two orange trees. Large size.',desired:'Lemons',quantity:'3 dozen',image:'',active:true)
+v2.listings.create(title:'Meyer Lemons',description:'So many lemons for trade.',desired:'Avocado',quantity:'100',image:'',active:true)
+v3.listings.create(title:'Persimmons',description:'From my tree',desired:'Eggs',quantity:'30',image:'',active:true)
+v3.listings.create(title:'Heirloom Tomatoes',description:'I have as many as I need. The rest are for trade.',desired:'Eggs',quantity:'50',image:'',active:true)
+v3.listings.create(title:'Vine Tomatoes',description:'Extra large. Extra tasty.',desired:'Avocado',quantity:'20',image:'',active:true)
+v4.listings.create(title:'Honey',description:'I have a small behive up north and I bring back honey to trade.',desired:'Oranges',quantity:'30 jars',image:'',active:true)
+v4.listings.create(title:'Avocados',description:'Haas avocados',desired:'Eggs',quantity:'40',image:'',active:true)
 
 Item.create(kind:'kind1',category:'', listing_id:'')
 
