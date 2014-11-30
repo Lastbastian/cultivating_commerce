@@ -13,7 +13,7 @@ v3 = User.create!(first_name:'Marlon', last_name:'Frausto', user_name:'marlonf',
 v4 = User.create!(first_name:'Chritine', last_name:'Vallaure', user_name:'christinev', email: 'christinevallaure@gmail.com',address_line_1:'', zipcode:'', about:'', phone:'555-555-5555', private_contact: true, user_img: Faker::Avatar.image, password:'12345678', password_confirmation:'12345678')
 
 10.times do
-  User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, user_name:'christinev', email: Faker::Internet.email, address_line_1: Faker::Address.street_name, zipcode: Faker::Address.zip_code, about: Faker::Lorem.paragraph, phone:Faker::PhoneNumber.phone_number, private_contact: false, user_img: Faker::Avatar.image,password:'12345678', password_confirmation:'12345678')
+  User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, user_name:'christinev', email: Faker::Internet.email, address_line_1: Faker::Address.street_name, zipcode: Faker::Address.zip_code, about: Faker::Lorem.paragraph, phone:Faker::PhoneNumber.phone_number, private_contact: false, user_img: Faker::Avatar.image,password:'12345678', password_confirmation:'12345678')
 end
 
 Listing.create(title:'Eggs',description:'Eggs from my city chickens',desired:'apple',quantity:'3 dozen',image:'',active:true, user_id: 1)
