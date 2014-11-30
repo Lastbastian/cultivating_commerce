@@ -47,7 +47,6 @@ ActiveRecord::Schema.define(version: 20141129190932) do
   create_table "items", force: true do |t|
     t.string   "kind"
     t.string   "category"
-    t.integer  "listing_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -59,6 +58,7 @@ ActiveRecord::Schema.define(version: 20141129190932) do
     t.string   "quantity"
     t.string   "image"
     t.boolean  "active"
+    t.integer  "item_id"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
