@@ -21,28 +21,34 @@
 <section class="user col-md-5 debugger">
 	<div class="user-info">
 		<div><a href="">Edit</a></div>
-		<img class="user-img" src="">
-		<h3> User Name</h3>
-		<p>Here is going to go the profile of the user where he or she is going to type information about themselves and it will be displayed on their profile page.</p>
+		<img class="user-img" src=" <%= current_user.user_img %> ">
+		<h3> <%= current_user.first_name + " " %><%= current_user.last_name %></h3>
+		<p> <%= current_user.about %> </p>
 	</div>
 	<div>
-		<a href="">Contact</a>
-		<a href="">Delete Contact</a>
+		<a href="mailto:<%= current_user.email %> ">Contact</a>
+		<form>
+			<input type="checkbox" name="private_contact" value= true><label = "private_contact"> Make my email private</label>
+		</form>
 	</div>
 
 	<div>
 		<h3>My exchanges</h3>
 		<a href="">Create an exchange</a>
 		<ul class="exchanges">
+			<% current_user.events do |event|%>   
 			<li class="exchange">
 				<div class="map-icon">Icon</div>
-				<h2>Exchange Name</h2>
-				<p>Address for exchange line 1</p>
-				<p>Address for exchange line 2</p>
+				<h2><%= event.title %></h2>
+				<p><%= event.address_line_1 %></p>
+				<p><%= event.city+ ", STATE" %></p>
+				<p><%= event.zipcode %> </p>
+				<p><%= event.description %></p>
 				<p>9AM-2PM every sunday</p>
 				<a href="">cancel</a>
 				<a href="">edit</a>
 			</li>
+			<% end %> 
 		</ul>
 	</div>
 
