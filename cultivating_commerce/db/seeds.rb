@@ -25,7 +25,13 @@ v3.listings.create(title:'Vine Tomatoes',description:'Extra large. Extra tasty.'
 v4.listings.create(title:'Honey',description:'I have a small behive up north and I bring back honey to trade.',desired:'Oranges',quantity:'30 jars',image:'',active:true)
 v4.listings.create(title:'Avocados',description:'Haas avocados',desired:'Eggs',quantity:'40',image:'',active:true)
 
-Item.create(kind:'',category:'')
+Item.create(kind:'kind1',category:'')
+Item.create(kind:'kind2',category:'')
+Item.create(kind:'kind3',category:'')
+Item.create(kind:'kind4',category:'')
+Item.create(kind:'kind5',category:'')
+Item.create(kind:'kind6',category:'')
+Item.create(kind:'kind7',category:'')
 
 v1.events.create(address_line_1:'590 Dolores St', city: 'San Francisco', zipcode:'94110', date:'12/13/14', time:'9am - 1pm',title:'Delores Park exchange', description:'', image:'')
 v1.events.create(address_line_1:'1089 Fulton St', city: 'San Francisco', zipcode:'94117', date:'12/20/14', time:'9am - 1pm',title:'Alamo Square Park exchange', description:'I will be setting up a table and canopy.  Join in if you want.', image:'')
