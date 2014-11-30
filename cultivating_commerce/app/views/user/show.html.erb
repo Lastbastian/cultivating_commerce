@@ -1,36 +1,24 @@
-<p>My details</p>
-<% if user_signed_in? %>
-  <p>Welcome <%= current_user.email %></p>
-  <%= link_to 'Logged In [click to logout]', destroy_user_session_path, :method => :delete %>
-<% else %>
-  <p>You are not signed in.</p>
-  <%= link_to 'Login', new_user_session_path %>
-<% end %>
+<div class="container-fluid debugger">
 
-<% if @current_user %>
-  <% current_user.events.each do |e| %>
-    <%= e.title %>
-  <% end %>
-<% end %>
-
-
-<header>
-	<div class="nav-bar">
-		<h1 class="logo">Cultivated Commerce</h1>
-		<div class="nav-right">
-			<h3>User Name</h3>
-			<a href="">Sign-out</a>
+<header class="debugger">
+	<div class="nav-bar row debugger">
+		<div class="col-md-6 debugger">
+			<h1 class="logo">Cultivated Commerce</h1>
 		</div>
-		<div>
-			<img class="user-img-s" src="">
+		<div class="nav-right col-md-6 debugger">
+					<h3>User Name</h3>
+					<a href="">Sign-out</a>
+				<div>
+					<img class="user-img-s" src="">
+				</div>
 		</div>
 	</div>
-	<div class="nav-sub">
+	<div class="nav-sub row debugger">
 		<a href="">Back to dashboard</a>
 	</div>
 </header>
 
-<section class="user">
+<section class="user col-md-5 debugger">
 	<div class="user-info">
 		<div><a href="">Edit</a></div>
 		<img class="user-img" src="">
@@ -73,7 +61,7 @@
 	</div>
 </section>
 
-<section class="listings">
+<section class="listings col-md-7 debugger">
 	<div><a href="">Add a product</a></div>
 		<div>
 			<ul class="type-icons">
@@ -95,8 +83,7 @@
 					<option value="type">Type 17</option>
 				</select>
 			</form>
-		</div>	
-	</div>
+		</div>
 	<ul class="listings">
 		<li class="listing">
 			<div class="type-icon"> Icon</div>
@@ -110,11 +97,13 @@
 			<div class="listing-back"> <!-- On flip, hides div-icon -->
 				<a href="">Edit</a>
 				<a href="">Delete</a>
-				<!-- <a href="">Deactive</a> --> 
+				<!-- <a href="">Deactive</a> -->
 			</div>
 		</li>
 	</ul>
 </section>
 
+
+</div> <!-- end of container -->
 
 
