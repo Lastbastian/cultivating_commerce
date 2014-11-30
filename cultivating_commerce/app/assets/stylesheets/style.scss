@@ -1,30 +1,84 @@
+/******************************************
+/* COLORS
+/*******************************************/
 
-$color-1 : #9ba174;
-$color-2 : #f9dda8;
-$color-3 : #b13537;
-$color-4 : #66df9a;
+$c1 : #C2C2C2; // grey
+$c2 : #f9dda8;
+$c3 : #b13537;
+$c4 : #66df9a;
 
-.filters {
-  background-color: red;
+.bg-c1{
+  background-color: $c1;
 }
+.bg-c2{
+  background-color: $c2;
+}
+.bg-c3{
+  background-color: $c3;
+}
+.bg-c4{
+  background-color: $c4;
+}
+
+
+.c-c1{
+  color: $c1;
+}
+.c-c2{
+  color: $c2;
+}
+.c-c3{
+  color: $c3;
+}
+.c-c4{
+  color: $c4;
+}
+.c-w{
+  color: white;
+}
+
+/******************************************
+/* PADDING & MARGIN
+/*******************************************/
+
+
+$m: 20px;
+$p: 20px;
+
+.m-tb {
+  margin: $m 0;
+}
+
+.p-tb {
+  padding: $m;
+}
+
+
+
 
 /******************************************
 /* BASE STYLES
 /*******************************************/
 
+
 body {
      font-size: 13px;
      line-height: 1.4;
      font-family: 'Open Sans', sans-serif;
+
 }
 
+ul {
+   list-style-type: none;
+   padding: 0;
+   margin: 0;
+ }
 
 h3 {
   font-size: 16px;
 }
 
 a {
-
 }
 
 a:hover
@@ -35,6 +89,14 @@ a:hover
 
 .debugger {
   outline: 1px solid red;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.hidden {
+    visibility: hidden;
 }
 
 /******************************************
@@ -52,6 +114,10 @@ a:hover
 /******************************************
 /* ITEM
 /*******************************************/
+
+.listing-img {
+
+}
 
 
 /******************************************
