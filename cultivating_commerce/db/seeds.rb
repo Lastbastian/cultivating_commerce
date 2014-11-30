@@ -25,7 +25,7 @@ Listing.create(title:'Vine Tomatoes',description:'Extra large. Extra tasty.',des
 Listing.create(title:'Honey',description:'I have a small behive up north and I bring back honey to trade.',desired:'Oranges',quantity:'30 jars',image:'',active:true, user_id:4)
 Listing.create(title:'Avocados',description:'Haas avocados',desired:'Eggs',quantity:'40',image:'',active:true, user_id:4)
 
-Item.create(kind:'kind1',category:'', listing_id:'')
+# Item.create(kind:'kind1',category:'', listing_id:'')
 
 e1 = Event.create(address_line_1:'590 Dolores St', city: 'San Francisco', zipcode:'94110', date:'12/13/14', time:'9am - 1pm',title:'Delores Park exchange', description:'', image:'', user_id:1)
 e2 = Event.create(address_line_1:'1089 Fulton St', city: 'San Francisco', zipcode:'94117', date:'12/20/14', time:'9am - 1pm',title:'Alamo Square Park exchange', description:'I will be setting up a table and canopy.  Join in if you want.', image:'', user_id:1)

@@ -7,7 +7,7 @@ class CreateListings < ActiveRecord::Migration
       t.string :quantity
       t.string :image
       t.boolean :active
-      t.references :item
+      t.belongs_to :item
 
       t.references :user      
       
