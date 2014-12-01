@@ -6,4 +6,6 @@ class Event < ActiveRecord::Base
   has_many :participants, class_name: "User", through: :events_participants
   has_many :hosts, class_name: "User", through: :events_hosts
 
+
+
 end
