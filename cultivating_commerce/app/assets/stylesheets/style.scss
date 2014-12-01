@@ -56,6 +56,8 @@ $p: 20px;
 
 
 
+
+
 /******************************************
 /* BASE STYLES
 /*******************************************/
@@ -99,6 +101,10 @@ a:hover
     visibility: hidden;
 }
 
+.inl {
+  display: inline-block;
+}
+
 // position
 
 .rel {
@@ -116,31 +122,8 @@ a:hover
 .nopadding {
    padding: 0 !important;
    margin: 0 !important;
+
 }
-
-/******************************************
-/* NAV
-/*******************************************/
-
-.test {
-  background-color: green;
-}
-
-
-/******************************************
-/* MAP
-/*******************************************/
-
-.map {
-  width: 100%;
-  padding: 0;
-}
-
-.mapbutton {
-  right: 5px;
-  top: 5px;
-}
-
 .button {
   border:1px solid $c1;
   cursor:pointer;
@@ -154,9 +137,47 @@ a:hover
   background-color: $c1;
   }
   :active{
-
   }
 }
+
+/******************************************
+/* NAV
+/*******************************************/
+
+.test {
+  background-color: green;
+}
+/******************************************
+/* FILTER
+/*******************************************/
+
+
+.type-icon {
+  width:70px;
+  height:70px;
+  border-radius:50px;
+  right:30px;
+  top:-15px;
+}
+
+.day {
+  font-size: 24px;
+}
+
+/******************************************
+/* MAP
+/*******************************************/
+
+.map {
+  width: 100%;
+  padding: 0;
+}
+
+.mapbutton {
+  right: 5px;
+  top: 10px;
+}
+
 /******************************************
 /* ITEM
 /*******************************************/
@@ -175,14 +196,6 @@ a:hover
   z-index: 1000;
 }
 
-.type-icon {
-  width:70px;
-  height:70px;
-  border-radius:50px;
-  right:30px;
-  top:-15px;
-
-}
 
 .showmeetup {
   right: 0;
