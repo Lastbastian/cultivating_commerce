@@ -1,6 +1,6 @@
 class UserController < ApplicationController
   def home
-    @user = User.find_by(first_name: "Marlon")
+    @user = User.find_by(id: params[:id])
     @items= Item.all
     render 'show'
   end
