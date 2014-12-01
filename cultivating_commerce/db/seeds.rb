@@ -16,6 +16,7 @@ v4 = User.create(first_name:'Chritine', last_name:'Vallaure', user_name:'christi
   User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, user_name:Faker::Internet.user_name, email: Faker::Internet.email, address_line_1: Faker::Address.street_name, zipcode: Faker::Address.zip_code, about: Faker::Lorem.sentence, phone:Faker::PhoneNumber.phone_number, private_contact: false, user_img: Faker::Avatar.image,password:'12345678',password_confirmation:'12345678')
 end
 
+v1.listings.create(title: Faker::Commerce.product_name, description: Kaer::Company.catch_phrase,desired:'apple',quantity:'3 dozen',image:'',active:true)
 v1.listings.create(title:'Eggs',description:'Eggs from my city chickens',desired:'apple',quantity:'3 dozen',image:'',active:true)
 v1.listings.create(title:'Oranges',description:'From my two orange trees. Large size.',desired:'Lemons',quantity:'3 dozen',image:'',active:true)
 v2.listings.create(title:'Meyer Lemons',description:'So many lemons for trade.',desired:'Avocado',quantity:'100',image:'',active:true)
@@ -25,13 +26,13 @@ v3.listings.create(title:'Vine Tomatoes',description:'Extra large. Extra tasty.'
 v4.listings.create(title:'Honey',description:'I have a small behive up north and I bring back honey to trade.',desired:'Oranges',quantity:'30 jars',image:'',active:true)
 v4.listings.create(title:'Avocados',description:'Haas avocados',desired:'Eggs',quantity:'40',image:'',active:true)
 
-Item.create(kind:'kind1',category:'')
-Item.create(kind:'kind2',category:'')
-Item.create(kind:'kind3',category:'')
-Item.create(kind:'kind4',category:'')
-Item.create(kind:'kind5',category:'')
-Item.create(kind:'kind6',category:'')
-Item.create(kind:'kind7',category:'')
+kind1 = Item.create(kind:'kind1',category:'')
+kind2 = Item.create(kind:'kind2',category:'')
+kind3 = Item.create(kind:'kind3',category:'')
+kind4 = Item.create(kind:'kind4',category:'')
+kind5 = Item.create(kind:'kind5',category:'')
+kind6 = Item.create(kind:'kind6',category:'')
+kind7 = Item.create(kind:'kind7',category:'')
 
 v1.events.create(address_line_1:'590 Dolores St', city: 'San Francisco', zipcode:'94110', date:'12/13/14', time:'9am - 1pm',title:'Delores Park exchange', description:'', image:'')
 v1.events.create(address_line_1:'1089 Fulton St', city: 'San Francisco', zipcode:'94117', date:'12/20/14', time:'9am - 1pm',title:'Alamo Square Park exchange', description:'I will be setting up a table and canopy.  Join in if you want.', image:'')
@@ -50,3 +51,7 @@ EventsParticipant.create(participant_id:5, event_id:5)
 EventsParticipant.create(participant_id:6, event_id:6)
 EventsParticipant.create(participant_id:1, event_id:6)
 EventsParticipant.create(participant_id:2, event_id:6)
+
+
+
+
