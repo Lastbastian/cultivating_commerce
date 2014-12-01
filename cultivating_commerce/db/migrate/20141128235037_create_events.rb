@@ -10,6 +10,9 @@ class CreateEvents < ActiveRecord::Migration
       t.string :description
       t.string :image
 
+      t.float :latitude
+      t.float :longitude
+
       t.references :user
 
       t.timestamps
