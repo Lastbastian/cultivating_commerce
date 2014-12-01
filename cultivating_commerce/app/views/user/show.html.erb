@@ -20,21 +20,27 @@
 
 <section class="user col-md-5 debugger">
 	<div class="user-info">
-		<div><a href="">Edit</a></div>
+		<div>
+			<a href="">Edit</a>
+		</div>
 		<img class="user-img" src=" <%= @user.user_img %> ">
 		<h3> <%= @user.first_name + " " %><%= @user.last_name %></h3>
 		<p> <%= @user.about %> </p>
 	</div>
 	<div>
 		<a href="mailto:<%= @user.email %> ">Contact</a>
+		<% if user_signed_in? && current_user.id == @user.id %>
 		<form>
 			<input type="checkbox" name="private_contact" value= true><label = "private_contact"> Make my email private</label>
 		</form>
+				<% end %>
 	</div>
 
 	<div>
 		<h3>My exchanges</h3>
+				<% if user_signed_in? && current_user.id == @user.id %>
 		<a href="">Create an exchange</a>
+		<% end %>
 		<ul class="exchanges">
 			<% @user.events.each do |event|%>   
 			<li class="exchange">
@@ -45,8 +51,10 @@
 				<p><%= event.zipcode %> </p>
 				<p><%= event.description %></p>
 				<p>9AM-2PM every sunday</p>
+						<% if user_signed_in? && current_user.id == @user.id %>
 				<a href="">cancel</a>
 				<a href="">edit</a>
+				<% end %>
 			</li>
 			<% end %> 
 		</ul>

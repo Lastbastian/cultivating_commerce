@@ -19,6 +19,10 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 # Auth
 gem 'devise'
 
+# Google maps
+gem 'geocoder'
+gem 'gmaps4rails'
+
 group :test, :development do
   gem 'factory_girl_rails'
   gem 'faker'

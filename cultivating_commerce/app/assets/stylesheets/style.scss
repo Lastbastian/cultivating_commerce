@@ -2,14 +2,22 @@
 /* COLORS
 /*******************************************/
 
-$c1 : #C2C2C2; // grey
+$c1 : #C2C2C2;
+$text : darken($c1, 40%);
 $c2 : red;
 $c3 : #b13537;
 $c4 : #66df9a;
 
+
+
 .bg-c1{
   background-color: $c1;
 }
+
+.bg-c1-light{
+  background-color: lighten($c1, 20%);
+}
+
 .bg-c2{
   background-color: $c2;
 }
@@ -56,6 +64,8 @@ $p: 20px;
 
 
 
+
+
 /******************************************
 /* BASE STYLES
 /*******************************************/
@@ -65,7 +75,7 @@ body {
      font-size: 13px;
      line-height: 1.4;
      font-family: 'Open Sans', sans-serif;
-
+     color: $text;
 }
 
 ul {
@@ -74,11 +84,16 @@ ul {
    margin: 0;
  }
 
+ h1 {
+  font-size: 20px;
+}
+
 h3 {
   font-size: 16px;
 }
 
 a {
+  color: $text;
 }
 
 a:hover
@@ -99,6 +114,10 @@ a:hover
     visibility: hidden;
 }
 
+.inl {
+  display: inline-block;
+}
+
 // position
 
 .rel {
@@ -116,29 +135,7 @@ a:hover
 .nopadding {
    padding: 0 !important;
    margin: 0 !important;
-}
 
-/******************************************
-/* NAV
-/*******************************************/
-
-.test {
-  background-color: green;
-}
-
-
-/******************************************
-/* MAP
-/*******************************************/
-
-.map {
-  width: 100%;
-  padding: 0;
-}
-
-.mapbutton {
-  right: 5px;
-  top: 5px;
 }
 
 .button {
@@ -154,9 +151,57 @@ a:hover
   background-color: $c1;
   }
   :active{
-
   }
 }
+
+/******************************************
+/* NAV
+/*******************************************/
+.logo {
+ font-size: 24px;
+ margin: 0;
+ padding-top: 8px;
+ weight: 800;
+}
+
+
+
+/******************************************
+/* FILTER
+/*******************************************/
+
+
+.type-icon {
+  width:70px;
+  height:70px;
+  border-radius:50px;
+  right:30px;
+  top:-15px;
+  padding-top: 20px;
+}
+
+.day {
+  font-size: 24px;
+}
+
+/******************************************
+/* MAP
+/*******************************************/
+body,html{
+  height:100%;
+}
+
+.googlemap {
+  height:100vh;
+min-height:100vh;
+position: fixed;
+}
+
+.mapbutton {
+  right: 5px;
+  top: 10px;
+}
+
 /******************************************
 /* ITEM
 /*******************************************/
@@ -175,14 +220,6 @@ a:hover
   z-index: 1000;
 }
 
-.type-icon {
-  width:70px;
-  height:70px;
-  border-radius:50px;
-  right:30px;
-  top:-15px;
-
-}
 
 .showmeetup {
   right: 0;
