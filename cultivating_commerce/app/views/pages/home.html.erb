@@ -14,7 +14,7 @@
 
   <section class="map col-md-5 nopadding">
     <div class="button abs mapbutton">
-      <a href="">add </a>
+      <a href="">add exchange</a>
     </div>
     <div class="googlemap">
       <iframe
@@ -23,30 +23,66 @@
     </div>
   </section>
 
-  <div class="col-md-7"> <!-- position right part -->
+  <div class="col-md-7">
     <section class="filters">
-      <div class="filter-days">
-        <ul class="days">
-          <li class="day">gathering-day</li>
-        </ul>
+
+      <!-- Add a product -->
+     <!--  <div class="row p-tb">
+        <div class="col-md-5">
+          <a class="button" href="">Add a product</a>
+        </div>
+      </div> -->
+
+      <div class="row p-tb">
+        <div class="col-md-2">
+          <p>Day for Exchange:</p>
+        </div>
+        <div class="filter-days col-md-10">
+          <ul class="days">
+            <!-- will be created dynamically -->
+            <li class="day inl">MON  |  </li>
+            <li class="day inl">TUE  |  </li>
+            <li class="day inl">WED  |  </li>
+            <li class="day inl">THU  |  </li>
+            <li class="day inl">FRI  |  </li>
+            <li class="day inl">SAT  |  </li>
+            <li class="day inl">SUN</li>
+          </ul>
+        </div>
       </div>
-      <div class="filter-type">
-        <ul class="type-icons">
-          <li class="type-icon">gathering-type</li>
-        </ul>
+      <!-- Type filter -->
+      <div class="filter-type row p-tb">
+        <div class="col-md-2">
+          <p>Type:</p>
+        </div>
+        <div class="col-md-10">
+          <ul class="type-icons">
+            <!-- will be created dynamically -->
+            <li class="type-icon bg-c1 inl">icon</li>
+            <li class="type-icon bg-c1 inl">icon</li>
+            <li class="type-icon bg-c1 inl">icon</li>
+            <li class="type-icon bg-c1 inl">icon</li>
+            <li class="type-icon bg-c1 inl">icon</li>
+            <li class="type-icon bg-c1 inl">icon</li>
+            <li class="type-icon bg-c1 inl">icon</li>
+          </ul>
+        </div>
       </div>
-      <div class="filter-search">
+      <!-- Search filed -->
+      <div class="filter-search row p-tb">
+        <div class="col-md-5">
+          <p>Specific product:</p>
+        </div>
+         <div class="col-md-7">
         <%= form_tag('/', :method => "get", id: "search-form", class:"search-form") do %>
           <%= text_field_tag :search, params[:search], placeholder: "Search Listings" %>
           <%= submit_tag "Search", :name => nil %>
         <% end %>
+        </div>
       </div>
     </section>
 
     <section class="listings-section">
-      <div>
-        <a href="">Add a product</a>
-      </div>
         <ul class="listings">
           <% if @listings && !@listings.empty? %>
             <% @listings.each do |l| %>
