@@ -13,8 +13,6 @@ Rails.application.routes.draw do
   get 'user/:id/edit' => 'user#edit'
 
 
-  
-
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
