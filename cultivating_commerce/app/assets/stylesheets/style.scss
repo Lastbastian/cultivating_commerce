@@ -2,14 +2,22 @@
 /* COLORS
 /*******************************************/
 
-$c1 : #C2C2C2; // grey
+$c1 : #C2C2C2;
+$text : darken($c1, 40%);
 $c2 : red;
 $c3 : #b13537;
 $c4 : #66df9a;
 
+
+
 .bg-c1{
   background-color: $c1;
 }
+
+.bg-c1-light{
+  background-color: lighten($c1, 20%);
+}
+
 .bg-c2{
   background-color: $c2;
 }
@@ -67,7 +75,7 @@ body {
      font-size: 13px;
      line-height: 1.4;
      font-family: 'Open Sans', sans-serif;
-
+     color: $text;
 }
 
 ul {
@@ -76,11 +84,16 @@ ul {
    margin: 0;
  }
 
+ h1 {
+  font-size: 20px;
+}
+
 h3 {
   font-size: 16px;
 }
 
 a {
+  color: $text;
 }
 
 a:hover
@@ -124,6 +137,7 @@ a:hover
    margin: 0 !important;
 
 }
+
 .button {
   border:1px solid $c1;
   cursor:pointer;
@@ -143,10 +157,15 @@ a:hover
 /******************************************
 /* NAV
 /*******************************************/
-
-.test {
-  background-color: green;
+.logo {
+ font-size: 24px;
+ margin: 0;
+ padding-top: 8px;
+ weight: 800;
 }
+
+
+
 /******************************************
 /* FILTER
 /*******************************************/
@@ -158,6 +177,7 @@ a:hover
   border-radius:50px;
   right:30px;
   top:-15px;
+  padding-top: 20px;
 }
 
 .day {
@@ -167,10 +187,14 @@ a:hover
 /******************************************
 /* MAP
 /*******************************************/
+body,html{
+  height:100%;
+}
 
-.map {
-  width: 100%;
-  padding: 0;
+.googlemap {
+  height:100vh;
+min-height:100vh;
+position: fixed;
 }
 
 .mapbutton {
