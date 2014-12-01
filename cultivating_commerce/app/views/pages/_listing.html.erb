@@ -1,28 +1,28 @@
-<li class="listing">
-  <div class="type-icon"> Icon</div>
-  <div class="listing-front">
-    <%= image_tag l.image, alt: "listing-image", class: "listing-img" %> <!--large image of product -->    
-    <%= image_tag l.user.user_img, alt: "usr-image", class:"user-img-s"  %> <!--small image of user -->
-    
-    <h3><%= l.title %></h3>
-    <p><%= l.description %></p>
-    <p><%= l.quantity %></p>
-    <a href="">show meetups</a><!--  This flips div into displaying meetups -->
-  </div>
-  <div class="listing-events"> <!-- On flip, hides div-icon -->
-    <div class="listing-event">
-      <h3><span class="map-icon">Icon</span>Gathering Title</h3>
-      <p>Address line 1</p>
-      <p>Address line 2</p>
-      <p><span>9:00AM-2:00PM</span>Date of event</p>
-      <a href="">Join Gathering</a>
-    </div>
-    <div class="listing-event">
-      <h3><span class="map-icon">Icon</span>Gathering Title</h3>
-      <p>Address line 1</p>
-      <p>Address line 2</p>
-      <p><span>9:00AM-2:00PM</span>Date of event</p>
-      <a href="">Join Gathering</a>
+<li class="listing row m-tb">
+  <div class="col-sm-12">
+    <div class="bg-c1 p-tb">
+      <div class="type-icon bg-c3 abs">
+        <p>Icon</p>
+      </div>
+      <div class="row">
+        <div class="listing-front col-xs-5">
+          <div>
+            <%= image_tag l.image, alt: "listing-image", class: "listing-img bg-c3 " %>
+              <%= image_tag l.user.user_img, alt: "usr-image", class: "user-img-s bg-c4 abs "  %> <!--small image of user -->
+          </div>
+        </div>
+        <div class="listing-front col-xs-6">
+          <div>
+            <h3><%= l.title %></h3>
+            <p><%= l.description %></p>
+            <p>Quantity (aprox.): <%= l.quantity %></p>
+            <br><br><br>
+            <a href="">show meetups</a>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </li>
+

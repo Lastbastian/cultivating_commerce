@@ -3,7 +3,7 @@
 /*******************************************/
 
 $c1 : #C2C2C2; // grey
-$c2 : #f9dda8;
+$c2 : red;
 $c3 : #b13537;
 $c4 : #66df9a;
 
@@ -99,27 +99,96 @@ a:hover
     visibility: hidden;
 }
 
+// position
+
+.rel {
+  position: relative;
+}
+
+.abs {
+  position: absolute;
+}
+
+.fix {
+  position: fixed;
+}
+
+.nopadding {
+   padding: 0 !important;
+   margin: 0 !important;
+}
+
 /******************************************
 /* NAV
 /*******************************************/
 
-
+.test {
+  background-color: green;
+}
 
 
 /******************************************
 /* MAP
 /*******************************************/
 
+.map {
+  width: 100%;
+  padding: 0;
+}
 
+.mapbutton {
+  right: 5px;
+  top: 5px;
+}
+
+.button {
+  border:1px solid $c1;
+  cursor:pointer;
+  color:$c1;
+  font-size:17px;
+  padding:10px;
+  background-color: white;
+  :hover{
+  color: white;
+  text-decoration:none;
+  background-color: $c1;
+  }
+  :active{
+
+  }
+}
 /******************************************
 /* ITEM
 /*******************************************/
 
 .listing-img {
+ width: 100%;
+ height: 200px;
+}
+
+.user-img-s {
+  width:70px;
+  height:70px;
+  border-radius:50px;
+  bottom: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.type-icon {
+  width:70px;
+  height:70px;
+  border-radius:50px;
+  right:30px;
+  top:-15px;
 
 }
 
-
+.showmeetup {
+  right: 0;
+  bottom: 0;
+  background-color: red;
+}
 /******************************************
 /* USER
 /*******************************************/
