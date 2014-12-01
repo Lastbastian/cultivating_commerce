@@ -1,7 +1,7 @@
 class Event < ActiveRecord::Base
 
   geocoded_by :full_street_address
-  after_validation :geocode, if: :full_street_address_changed?
+  after_validation :geocode
   reverse_geocoded_by :latitude, :longitude
   
   has_many :events_participants
