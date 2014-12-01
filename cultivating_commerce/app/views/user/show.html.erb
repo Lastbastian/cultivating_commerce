@@ -1,28 +1,9 @@
-<div class="container-fluid debugger">
-
-<header class="debugger">
-	<div class="nav-bar row debugger">
-		<div class="col-md-6 debugger">
-			<h1 class="logo">Cultivated Commerce</h1>
-		</div>
-		<div class="nav-right col-md-6 debugger">
-					<h3>User Name</h3>
-					<a href="">Sign-out</a>
-				<div>
-					<img class="user-img-s" src="">
-				</div>
-		</div>
-	</div>
-	<div class="nav-sub row debugger">
-		<a href="">Back to dashboard</a>
-	</div>
-</header>
 
 <section class="user col-md-5 debugger">
 	<div class="user-info">
-		<div>
-			<a href="">Edit</a>
-		</div>
+		<% if user_signed_in? && current_user.id == @user.id %>
+		<div><a href="">Edit</a></div>
+		<% end %>
 		<img class="user-img" src=" <%= @user.user_img %> ">
 		<h3> <%= @user.first_name + " " %><%= @user.last_name %></h3>
 		<p> <%= @user.about %> </p>
@@ -33,89 +14,68 @@
 		<form>
 			<input type="checkbox" name="private_contact" value= true><label = "private_contact"> Make my email private</label>
 		</form>
-				<% end %>
-	</div>
-
-	<div>
-		<h3>My exchanges</h3>
-				<% if user_signed_in? && current_user.id == @user.id %>
-		<a href="">Create an exchange</a>
 		<% end %>
+	</div>
+	<div>
+		<h2>My exchanges</h2>
+		<% if user_signed_in? && current_user.id == @user.id %>
+		<div class="button"> <a href="">Create an exchange</a></div>
+		<%end %>
 		<ul class="exchanges">
-			<% @user.events.each do |event|%>   
-			<li class="exchange">
-				<div class="map-icon">Icon</div>
-				<h2><%= event.title %></h2>
-				<p><%= event.address_line_1 %></p>
-				<p><%= event.city+ ", STATE" %></p>
-				<p><%= event.zipcode %> </p>
-				<p><%= event.description %></p>
-				<p>9AM-2PM every sunday</p>
-						<% if user_signed_in? && current_user.id == @user.id %>
-				<a href="">cancel</a>
-				<a href="">edit</a>
-				<% end %>
-			</li>
-			<% end %> 
+			<% if @user.events && !@user.events.empty? %>
+			<% @user.events.each do |e| %>
+			<%= render 'events', e: e %>
+			<% end %>
+			<% end %>
 		</ul>
 	</div>
-
 	<div>
-		<h3>Exchanges I Attend</h3>
+		<h2>Exchanges I Attend</h2>
 		<ul class="exchanges">
 			<li class="exchange">
 				<div class="map-icon">Icon</div>
-				<h2>Exchange Name</h2>
+				<h3>Exchange Name</h3>
 				<p>Address for exchange line 1</p>
 				<p>Address for exchange line 2</p>
 				<p><span>9AM-2PM</span> every sunday</p>
+				<% if user_signed_in? && current_user.id == @user.id %>
 				<a href="">unattend exchange</a>
+				<% end %>
 			</li>
 		</ul>
 	</div>
 </section>
 
 <section class="listings col-md-7 debugger">
-	<div><a href="">Add a product</a></div>
-		<div>
-			<ul class="type-icons">
-				<li type="type-icon">Icon</li><!--  ITERATE OVER LIST ONCE DOING AJAX CALL  -->
-			</ul>
-			<form class="listing-form" action="/" type="post">
-				<img src="">
-				<input type="text" name="Title" value="Listing Title">
-				<input type="text" name="Description" value="Add description">
-				<input type="text" name="Quantity" value="Example: 4lbs">
-				<input type="button" value="Submit">
-				<select>
-					<% @items.each do |item| %>
-					<option value="type"><%= item.kind %></option>
-					<% end%> 
-				</select>
-			</form>
-		</div>
+	<% if user_signed_in? && current_user.id == @user.id %>
+	<div>
+		<a href="">Add a product</a>
+	</div>
+	<div>
+		<ul class="type-icons">
+			<li type="type-icon">Icon</li><!--  ITERATE OVER LIST ONCE DOING AJAX CALL  -->
+		</ul>
+		<form class="listing-form" action="/" type="post">
+			<img src="">
+			<input type="text" name="Title" value="Listing Title">
+			<input type="text" name="Description" value="Add description">
+			<input type="text" name="Quantity" value="Example: 4lbs">
+			<input type="button" value="Submit">
+			<select>
+				<% @items.each do |item| %>
+				<option value="type"><%= item.kind %></option>
+				<% end%>
+			</select>
+		</form>
+	</div>
+	<% end %>
 	<ul class="listings">
-				<% @user.listings.each do |listing| %>
-		<li class="listing">
-			<div class="type-icon"> Icon</div>
-			<div class="listing-front">
-				<img class="listing-img" src="http://i2.kym-cdn.com/entries/icons/original/000/000/184/Spaghetti_cat.JPG">
-				<h3><%=listing.title%></h3>
-				<p><%=listing.description%></p>
-				<p>Quantity: <%=listing.quantity%></p>
-				<a href="">edit</a><!--  This flips div into listing-edit-options -->
-			</div>
-			<div class="listing-back"> <!-- On flip, hides div-icon -->
-				<a href="">Edit</a>
-				<a href="">Delete</a>
-				<!-- <a href="">Deactive</a> -->
-			</div>
-		</li>
+		<% if @user.listings && !@user.listings.empty? %>
+		<% @user.listings.each do |l| %>
+		<%= render 'listing', l: l %>
+		<% end %>
 		<% end %>
 	</ul>
 </section>
-
-
-</div> <!-- end of container -->
 
 

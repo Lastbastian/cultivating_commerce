@@ -1,0 +1,19 @@
+<li class="listing">
+      <div class="type-icon"> Icon</div>
+      <div class="listing-front">
+        <img class="listing-img" src="http://i2.kym-cdn.com/entries/icons/original/000/000/184/Spaghetti_cat.JPG">
+        <h3><%=l.title%></h3>
+        <p><%=l.description%></p>
+        <p>Quantity: <%=l.quantity%></p>
+      <% if user_signed_in? && current_user.id == @user.id %>
+        <div class="button"><a href="">edit</a></div><!--  This flips div into l-edit-options -->
+      <% end %>
+      </div>
+        <% if user_signed_in? && current_user.id == @user.id %>
+      <div class="l-back"> <!-- On flip, hides div-icon -->
+        <a href="">Edit</a>
+        <a href="">Delete</a>
+        <!-- <a href="">Deactive</a> -->
+      </div>
+      <% end %>
+    </li>
