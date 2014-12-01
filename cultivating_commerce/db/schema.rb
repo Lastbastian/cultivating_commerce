@@ -25,6 +25,8 @@ ActiveRecord::Schema.define(version: 20141129190932) do
     t.string   "title"
     t.string   "description"
     t.string   "image"
+    t.float    "latitude"
+    t.float    "longitude"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"

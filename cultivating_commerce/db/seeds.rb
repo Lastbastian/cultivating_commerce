@@ -16,7 +16,7 @@ v4 = User.create(first_name:'Chritine', last_name:'Vallaure', user_name:'christi
   User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, user_name:Faker::Internet.user_name, email: Faker::Internet.email, address_line_1: Faker::Address.street_name, zipcode: Faker::Address.zip_code, about: Faker::Lorem.sentence, phone:Faker::PhoneNumber.phone_number, private_contact: false, user_img: Faker::Avatar.image,password:'12345678',password_confirmation:'12345678')
 end
 
-v1.listings.create(title: Faker::Commerce.product_name, description: Kaer::Company.catch_phrase,desired:'apple',quantity:'3 dozen',image:'',active:true)
+v1.listings.create(title: Faker::Commerce.product_name, description: Faker::Company.catch_phrase,desired:'apple',quantity:'3 dozen',image:'',active:true)
 v1.listings.create(title:'Eggs',description:'Eggs from my city chickens',desired:'apple',quantity:'3 dozen',image:'',active:true)
 v1.listings.create(title:'Oranges',description:'From my two orange trees. Large size.',desired:'Lemons',quantity:'3 dozen',image:'',active:true)
 v2.listings.create(title:'Meyer Lemons',description:'So many lemons for trade.',desired:'Avocado',quantity:'100',image:'',active:true)
@@ -51,7 +51,3 @@ EventsParticipant.create(participant_id:5, event_id:5)
 EventsParticipant.create(participant_id:6, event_id:6)
 EventsParticipant.create(participant_id:1, event_id:6)
 EventsParticipant.create(participant_id:2, event_id:6)
-
-
-
-
