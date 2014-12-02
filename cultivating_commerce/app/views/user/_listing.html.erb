@@ -1,19 +1,35 @@
-<li class="listing">
-      <div class="type-icon"> Icon</div>
-      <div class="listing-front">
-        <img class="listing-img" src="http://i2.kym-cdn.com/entries/icons/original/000/000/184/Spaghetti_cat.JPG">
-        <h3><%=l.title%></h3>
-        <p><%=l.description%></p>
-        <p>Quantity: <%=l.quantity%></p>
-      <% if user_signed_in? && current_user.id == @user.id %>
-        <div class="button"><a href="">edit</a></div><!--  This flips div into l-edit-options -->
-      <% end %>
+<li class="listing row m-tb">
+  <div class="listing-front col-sm-12 show">
+    <div class="bg-c1 p-tb">
+      <div class="type-icon bg-c3 abs">
+        <p><i class="fa fa-bicycle fa-2x"></i></p>
       </div>
-        <% if user_signed_in? && current_user.id == @user.id %>
-      <div class="l-back"> <!-- On flip, hides div-icon -->
-        <a href="">Edit</a>
-        <a href="">Delete</a>
-        <!-- <a href="">Deactive</a> -->
+      <div class="row">
+        <div class="col-xs-5">
+          <img class="listing-img" src="http://i2.kym-cdn.com/entries/icons/original/000/000/184/Spaghetti_cat.JPG">
+        </div>
+        <div class="col-xs-6">
+          <h3 contenteditable="true"><%=l.title%></h3>
+          <p><%=l.description%></p>
+          <p>Quantity: <%=l.quantity%></p>
+          <% if user_signed_in? && current_user.id == @user.id %>
+          <div class="button"><a href="">edit</a></div><!--  This flips div into l-edit-options -->
+          <% end %>
+          <br><br><br><br>
+          <a class="flip" href="">edit</a>
+        </div>
       </div>
-      <% end %>
-    </li>
+    </div>
+  </div>
+
+      <!-- BACKSIDE -->
+  <div class="listing-events col-sm-12 hidden">
+    <div class="bg-c1 p-tb">
+      <a class="flip text-right" href="">return</a>
+      <div class="l-back center">
+        <a class="button" href="">Edit</a>
+        <a class="button" href="">Delete</a>
+      </div>
+    </div>
+  </div>
+</li>

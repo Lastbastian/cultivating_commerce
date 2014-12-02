@@ -1,15 +1,16 @@
 
-<section class="user col-md-5 debugger">
-	<div class="user-info">
+<!-- LEFT SIDE -->
+<section class="user col-md-5 bg-c1">
+	<div class="user-info text-center">
 		<% if user_signed_in? && current_user.id == @user.id %>
 		<div><a href="">Edit</a></div>
 		<% end %>
 		<img class="user-img" src=" <%= @user.user_img %> ">
-		<h3> <%= @user.first_name + " " %><%= @user.last_name %></h3>
+		<h2> <%= @user.first_name %></h2>
 		<p> <%= @user.about %> </p>
 	</div>
 	<div>
-		<a href="mailto:<%= @user.email %> ">Contact</a>
+		<a class="button" href="mailto:<%= @user.email %> ">Contact</a>
 		<% if user_signed_in? && current_user.id == @user.id %>
 		<form>
 			<input type="checkbox" name="private_contact" value= true><label = "private_contact"> Make my email private</label>
@@ -46,7 +47,8 @@
 	</div>
 </section>
 
-<section class="listings col-md-7 debugger">
+<!-- RIGHT SIDE -->
+<section class="listings col-md-7">
 	<% if user_signed_in? && current_user.id == @user.id %>
 	<div>
 		<a href="">Add a product</a>
