@@ -1,51 +1,35 @@
-<% @day_classes = l.user.events.pluck(:date).map {|d| d.strftime("%A") }.uniq  %>
-<div class= "<%= @day_classes.join(" ") %>"> </div>
 <li class="listing row m-tb">
-
-  <!-- FRONTSIDE -->
   <div class="listing-front col-sm-12 show">
     <div class="bg-c1 p-tb">
       <div class="type-icon bg-c3 abs">
         <p><i class="fa fa-bicycle fa-2x"></i></p>
       </div>
-
       <div class="row">
         <div class="col-xs-5">
-          <div>
-            <%= image_tag l.image, alt: "listing-image", class: "listing-img bg-c3 " %>
-              <%= image_tag l.user.user_img, alt: "usr-image", class: "user-img-s bg-c4 abs "  %> <!--small image of user -->
-          </div>
+          <img class="listing-img" src="http://i2.kym-cdn.com/entries/icons/original/000/000/184/Spaghetti_cat.JPG">
         </div>
         <div class="col-xs-6">
-          <div>
-            <h3><%= l.title %></h3>
-            <p><%= l.description %></p>
-            <p>Quantity (aprox.): <%= l.quantity %></p>
-            <br><br><br>
-            <a href="">show meetups</a>
-          </div>
+          <h3 contenteditable="true"><%=l.title%></h3>
+          <p><%=l.description%></p>
+          <p>Quantity: <%=l.quantity%></p>
+          <% if user_signed_in? && current_user.id == @user.id %>
+          <div class="button"><a href="">edit</a></div><!--  This flips div into l-edit-options -->
+          <% end %>
+          <br><br><br><br>
+          <a class="flip" href="">edit</a>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- BACKSIDE -->
+      <!-- BACKSIDE -->
   <div class="listing-events col-sm-12 hidden">
     <div class="bg-c1 p-tb">
-      <a class="flip" href="">return</a>  <!-- placeholder -->
-      <div class="row">
-        <% if l.user.events && !l.user.events.empty?  %>
-          <% l.user.events.each do |le| %>
-            <div class="listing-event col-xs-6">
-              <div>
-                <h3><span class="map-icon">Icon</span>Gathering Title</h3>
-                <p><%= le.address_line_1 %></p>                
-                <p><span><%= le.time %></span><%= le.date %></p>
-                <a href="">Join Gathering</a>
-              </div>
-            </div>            
-          <% end %>
-        <% end %>            
+      <a class="flip text-right" href="">return</a>
+      <div class="l-back center">
+        <a class="button" href="">Edit</a>
+        <a class="button" href="">Delete</a>
+      </div>
     </div>
   </div>
 </li>
