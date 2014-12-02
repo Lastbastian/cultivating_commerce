@@ -9,7 +9,10 @@ class PagesController < ApplicationController
       @events = Event.all
       @listings = Listing.all
     end
-      @events_coords = @events.map {|f| { lat: f.latitude, lng: f.longitude } }
-      @events_coords = @events_coords.to_json.html_safe
+      @hash = Gmaps4rails.build_markers(@events) do |event, marker|
+        marker.lat event.latitude
+        marker.lng event.longitude
+        marker.infowindow render_to_string(:partial => "/events/show", :locals => { :object => event})
+      end
   end
 end
