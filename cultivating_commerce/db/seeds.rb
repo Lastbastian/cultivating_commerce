@@ -7,26 +7,35 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-v1 = User.create(first_name:'Chris', last_name:'Bastian', user_name:'chrisb', email:'peacethrubeats@gmail.com',address_line_1:'277A Duncan st.', zipcode:'94131', about:'', phone:'510-717-7373', private_contact: true, user_img:'', user_img:'',password:'12345678',password_confirmation:'12345678')
-v2 = User.create(first_name:'Osman', last_name:'Afridi', user_name:'osmana', email: 'osmanisalso@gmail.com', address_line_1:'', zipcode:'', about:'', phone:'(510) 447-3200', private_contact: true, user_img:'', user_img:'',password:'12345678',password_confirmation:'12345678')
-v3 = User.create(first_name:'Marlon', last_name:'Frausto', user_name:'marlonf', email:'marlonjfrausto@gmail.com',  address_line_1:'', zipcode:'', about:'', phone:'(619) 373-6451', private_contact: true, user_img:'', user_img:'',password:'12345678',password_confirmation:'12345678')
-v4 = User.create(first_name:'Chritine', last_name:'Vallaure', user_name:'christinev', email: 'christinevallaure@gmail.com',address_line_1:'', zipcode:'', about:'', phone:'555-555-5555', private_contact: true, user_img:'',password:'12345678',password_confirmation:'12345678')
+v1 = User.create(first_name:'Chris', last_name:'Bastian', user_name:'chrisb', email:'peacethrubeats@gmail.com',address_line_1:'277A Duncan st.', zipcode:'94131', about:'', phone:'510-717-7373', private_contact: true, user_img:"chris.jpg", user_img:'',password:'12345678',password_confirmation:'12345678')
+v2 = User.create(first_name:'Osman', last_name:'Afridi', user_name:'osmana', email: 'osmanisalso@gmail.com', address_line_1:'', zipcode:'', about:'', phone:'(510) 447-3200', private_contact: true, user_img:'', user_img:"osman.jpg",password:'12345678',password_confirmation:'12345678')
+v3 = User.create(first_name:'Marlon', last_name:'Frausto', user_name:'marlonf', email:'marlonjfrausto@gmail.com',  address_line_1:'', zipcode:'', about:'', phone:'(619) 373-6451', private_contact: true, user_img:'', user_img:"murat.jpg",password:'12345678',password_confirmation:'12345678')
+v4 = User.create(first_name:'Chritine', last_name:'Vallaure', user_name:'christinev', email: 'christinevallaure@gmail.com',address_line_1:'', zipcode:'', about:'', phone:'555-555-5555', private_contact: true, user_img:"christine.jpg",password:'12345678',password_confirmation:'12345678')
 
 10.times do
-  User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, user_name:Faker::Internet.user_name, email: Faker::Internet.email, address_line_1: Faker::Address.street_name, zipcode: Faker::Address.zip_code, about: Faker::Lorem.sentence, phone:Faker::PhoneNumber.phone_number, private_contact: false, user_img: Faker::Avatar.image,password:'12345678',password_confirmation:'12345678')
+  User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, user_name:Faker::Internet.user_name, email: Faker::Internet.email, address_line_1: Faker::Address.street_name, zipcode: Faker::Address.zip_code, about: Faker::Lorem.sentence, phone:Faker::PhoneNumber.phone_number, private_contact: false, user_img: "user2" ,password:'12345678',password_confirmation:'12345678')
 end
 
 
-v1.listings.create(title: Faker::Commerce.product_name, description: Faker::Company.catch_phrase,desired:'apple',quantity:'3 dozen',image:'',active:true)
-v1.listings.create(title:'Eggs',description:'Eggs from my city chickens',desired:'apple',quantity:'3 dozen',image:'',active:true)
-v1.listings.create(title:'Oranges',description:'From my two orange trees. Large size.',desired:'Lemons',quantity:'3 dozen',image:'',active:true)
-v2.listings.create(title:'Meyer Lemons',description:'So many lemons for trade.',desired:'Avocado',quantity:'100',image:'',active:true)
-v2.listings.create(title: Faker::Commerce.product_name, description: Faker::Company.catch_phrase,desired:'apple',quantity:'3 dozen',image:'',active:true)
-v3.listings.create(title:'Persimmons',description:'From my tree',desired:'Eggs',quantity:'30',image:'',active:true)
-v3.listings.create(title:'Heirloom Tomatoes',description:'I have as many as I need. The rest are for trade.',desired:'Eggs',quantity:'50',image:'',active:true)
-v3.listings.create(title:'Vine Tomatoes',description:'Extra large. Extra tasty.',desired:'Avocado',quantity:'20',image:'',active:true)
-v4.listings.create(title:'Honey',description:'I have a small behive up north and I bring back honey to trade.',desired:'Oranges',quantity:'30 jars',image:'',active:true)
-v4.listings.create(title:'Avocados',description:'Haas avocados',desired:'Eggs',quantity:'40',image:'',active:true)
+# v1.listings.create(title: Faker::Commerce.product_name, description: Faker::Company.catch_phrase,desired:'apple',quantity:'3 dozen', image:"asset_path apple3.jpg", active:true)
+v1.listings.create(title:'Eggs',description:'Eggs from my city chickens',desired:'apple',quantity:'3 dozen',image:"egg3.jpg",active:true)
+v1.listings.create(title:'Eggs',description:'A lot of extra eggs lorem ipsum',desired:'apple',quantity:'3 dozen', active:true, image: "egg1.jpg")
+v1.listings.create(title:'Eggs',description:'Fresh eggs from our farm',desired:'apple',quantity:'3 dozen',active:true, image: "egg2.jpg")
+v1.listings.create(title:'Oranges',description:'From my two orange trees. Large size.',desired:'Lemons',quantity:'3 dozen',image:"orange2.jpg",active:true)
+v2.listings.create(title:'Meyer Lemons',description:'So many lemons for trade.',desired:'Avocado',quantity:'100',image:"lemon1.jpg",active:true)
+v2.listings.create(title:'Meyer Lemons',description:'So many lemons for trade.',desired:'Avocado',quantity:'100',image:"lemon2.jpg",active:true)
+v2.listings.create(title:'Meyer Lemons',description:'So many lemons for trade.',desired:'Avocado',quantity:'100',image:"lemon3.jpg",active:true)
+v2.listings.create(title:'Meyer Lemons',description:'So many lemons for trade.',desired:'Avocado',quantity:'100',image:"lemon4.jpg",active:true)
+# v2.listings.create(title: Faker::Commerce.product_name, description: Faker::Company.catch_phrase,desired:'apple',quantity:'3 dozen',image:"lemon3.jpg" ,active:true)
+v3.listings.create(title:'Persimmons',description:'From my tree',desired:'Eggs',quantity:'30',image:"persimmons2.jpg",active:true)
+v3.listings.create(title:'Heirloom Tomatoes',description:'I have as many as I need. The rest are for trade.',desired:'Eggs',quantity:'50',image:"tomatoes1.jpg",active:true)
+v3.listings.create(title:'Vine Tomatoes',description:'Extra large. Extra tasty.',desired:'Avocado',quantity:'20',image:"tomatoes2.jpg",active:true)
+v4.listings.create(title:'Honey',description:'I have a small behive up north and I bring back honey to trade.',desired:'Oranges',quantity:'30 jars',image:"honey1.jpg",active:true)
+v4.listings.create(title:'Honey',description:'I have a small behive up north and I bring back honey to trade.',desired:'Oranges',quantity:'30 jars',image:"honey2.jpg",active:true)
+v4.listings.create(title:'Honey',description:'I have a small behive up north and I bring back honey to trade.',desired:'Oranges',quantity:'30 jars',image:"honey4.jpg",active:true)
+v4.listings.create(title:'Honey',description:'I have a small behive up north and I bring back honey to trade.',desired:'Oranges',quantity:'30 jars',image:"honey6.jpg",active:true)
+v4.listings.create(title:'Avocados',description:'Haas avocados',desired:'Eggs',quantity:'40',image:"avocado.jpg",active:true)
+
 
 kind1 = Item.create(kind:'kind1',category:'')
 kind2 = Item.create(kind:'kind2',category:'')
