@@ -1,4 +1,7 @@
+<% @day_classes = l.user.events.pluck(:date).map {|d| d.strftime("%A") }.uniq  %>
+<div class= "<%= @day_classes.join(" ") %>"> </div>
 <li class="listing row m-tb">
+
   <!-- FRONTSIDE -->
   <div class="listing-front col-sm-12 show">
     <div class="bg-c1 p-tb">
@@ -31,30 +34,18 @@
     <div class="bg-c1 p-tb">
       <a class="flip" href="">return</a>  <!-- placeholder -->
       <div class="row">
-        <div class="listing-event col-xs-6">
-          <div>
-            <h3><span class="map-icon">Icon</span>Gathering Title</h3>
-            <p>Address line 1</p>
-            <p>Address line 2</p>
-            <p><span>9:00AM-2:00PM</span>Date of event</p>
-            <a href="">Join Gathering</a>
-          </div>
-        </div>
-        <div class="listing-event col-xs-6">
-          <div>
-            <h3><span class="map-icon">Icon</span>Gathering Title</h3>
-            <p>Address line 1</p>
-            <p>Address line 2</p>
-            <p><span>9:00AM-2:00PM</span>Date of event</p>
-            <a href="">Join Gathering</a>
-          </div>
-        </div>
-      </div>
+        <% if l.user.events && !l.user.events.empty?  %>
+          <% l.user.events.each do |le| %>
+            <div class="listing-event col-xs-6">
+              <div>
+                <h3><span class="map-icon">Icon</span>Gathering Title</h3>
+                <p><%= le.address_line_1 %></p>                
+                <p><span><%= le.time %></span><%= le.date %></p>
+                <a href="">Join Gathering</a>
+              </div>
+            </div>            
+          <% end %>
+        <% end %>            
     </div>
   </div>
-
 </li>
-
-
-
-
