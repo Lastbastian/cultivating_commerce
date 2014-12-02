@@ -1,0 +1,10 @@
+<%= simple_form_for @listing do |f| %>
+  <%= f.input :title %>
+  <%= f.input :description %>
+  <%= f.input :desired %>
+  <%= f.input :quantity %>
+  <%= f.input :image %>
+  <%= collection_radio_buttons(:listing, :item_id, Item.all, :id, :category) %>
+  <%= f.input :active %>
+  <%= f.button :submit %>
+<% end %>
