@@ -15,6 +15,7 @@
           <% if user_signed_in? && current_user.id == @user.id %>
           <div class="button">
             <%= link_to("Edit", edit_listing_path(l)) %>
+            <%= link_to("Delete", listing_path(l), method: :delete) %>
           </div><!--  This flips div into l-edit-options -->
           <% end %>
           <br><br><br><br>
