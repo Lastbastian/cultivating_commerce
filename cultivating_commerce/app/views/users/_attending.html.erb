@@ -6,7 +6,7 @@
   <p><%= e.zipcode %> </p>
   <p><%= e.description %></p>
   <% if user_signed_in? && current_user.id == @user.id %>
-    <%= link_to "Cancel attendance", event_path, :method => 'delete' %>
-    <a href="">edit</a>
+    <%= link_to("Cancel attendance", "/events/"+e.id.to_s+"/unattend") %>
+    <%= link_to("Edit event", edit_event_path(e)) %>
   <%end%>
 </li>
