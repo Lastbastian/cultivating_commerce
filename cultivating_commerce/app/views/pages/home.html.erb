@@ -7,20 +7,6 @@
   </section>
 
   <div class="col-md-7">
-    <!-- Add Exchange Modal -->
-    <div class="modal fade" id="myAddExchange" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-            <h4 class="modal-title" id="myModalLabel">Add exchange</h4>
-          </div>
-          <div class="modal-body">
-            <%= render "pages/addevent" %>
-          </div>
-        </div>
-      </div>
-    </div>
     <section class="filters">
 
       <!-- Add a product -->
@@ -90,7 +76,7 @@
         </div>
       </div>
     </section>
-    <button type="button" class="button" data-toggle="modal" data-target="#myAddExchange">Add exchange</button>
+
     <section class="listings-section">
         <ul class="listings">
           <% if @listings && !@listings.empty? %>
