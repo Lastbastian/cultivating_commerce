@@ -7,8 +7,10 @@
   </section>
 
   <div class="col-md-7">
-    <section class="filters">
 
+    <section class="filters">
+    <!-- Add Exchange Modal -->
+    <%= render "pages/addevent" %>
       <!-- Add a product -->
      <!--  <div class="row p-tb">
         <div class="col-md-5">
@@ -76,7 +78,7 @@
         </div>
       </div>
     </section>
-
+    <button type="button" class="button" data-toggle="modal" data-target="#myAddEvent">Add exchange</button>
     <section class="listings-section">
         <ul class="listings">
           <% if @listings && !@listings.empty? %>
