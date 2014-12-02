@@ -7,6 +7,7 @@ class PagesController < ApplicationController
 
       @events = users.map { |u| u.events }.flatten
     else
+      @listings = Listing.all      
       @events = Event.all
     end
 

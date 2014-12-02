@@ -21,7 +21,9 @@
           <p>Day for Exchange:</p>
         </div>
         <div class="filter-days col-md-10">
-          <ul class="days text-center">
+
+          <ul class="days text-center">            
+            <!-- will be created dynamically -->
             <li class="day inl">MON  |  </li>
             <li class="day inl">TUE  |  </li>
             <li class="day inl">WED  |  </li>
@@ -66,22 +68,29 @@
           </ul>
         </div>
       </div>
-      <!-- Search filed -->
+      <!-- Search field -->
       <div class="filter-search row p-tb">
         <div class="col-md-5">
           <p>Specific product:</p>
         </div>
          <div class="col-md-7">
-        <%= form_tag('/', :method => "get", id: "search-form", class:"search-form") do %>
-          <%= text_field_tag :search, params[:search], placeholder: "Search Listings" %>
-          <%= submit_tag "Search", :name => nil %>
-        <% end %>
+            <%= form_tag('/', :method => "get", id: "search-form", class:"search-form") do %>
+              <label>
+              <input type="checkbox" id="1">Monday</label>
+              
+              <label>
+              <input type="checkbox" id="2">Tuesday</label>
+              <label>
+              <input type="checkbox" id="3">Wednesday</label>
+              <%= text_field_tag :search, params[:search], placeholder: "Search Listings" %>
+              <%= submit_tag "Search", :name => nil %>
+            <% end %>
         </div>
       </div>
     </section>
 
     <section class="listings-section">
-        <ul class="listings">
+      <ul class="listings">
           <% if @listings && !@listings.empty? %>
             <% @listings.each do |l| %>
               <%= render 'listing', l: l %>
