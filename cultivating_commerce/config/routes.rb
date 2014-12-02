@@ -12,6 +12,14 @@ Rails.application.routes.draw do
   get 'user/:id' => 'user#home'
   get 'user/:id/edit' => 'user#edit'
 
+  get 'event/:id/unattend' => 'event#unattend'
+  get 'event/:id/cancel' => 'event#cancel'
+  # get 'event/:id/edit' => 'event#edit'
+
+  resources :users
+  resources :events
+
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

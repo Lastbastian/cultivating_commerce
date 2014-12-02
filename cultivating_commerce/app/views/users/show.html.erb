@@ -1,4 +1,3 @@
-
 <!-- LEFT SIDE -->
 <section class="user col-md-5 bg-c1">
 	<div class="user-info text-center">
@@ -12,37 +11,35 @@
 	<div>
 		<a class="button" href="mailto:<%= @user.email %> ">Contact</a>
 		<% if user_signed_in? && current_user.id == @user.id %>
-		<form>
-			<input type="checkbox" name="private_contact" value= true><label = "private_contact"> Make my email private</label>
-		</form>
+			<form>
+				<input type="checkbox" name="private_contact" value= true><label = "private_contact"> Make my email private</label>
+			</form>
 		<% end %>
 	</div>
 	<div>
-		<h2>My exchanges</h2>
-		<% if user_signed_in? && current_user.id == @user.id %>
-		<div class="button"> <a href="">Create an exchange</a></div>
-		<%end %>
+		<h2>Events I will attend</h2>
+
 		<ul class="exchanges">
-			<% if @user.events && !@user.events.empty? %>
-			<% @user.events.each do |e| %>
-			<%= render 'events', e: e %>
+		<% if @user.events && !@user.events.empty? %>
+				<% @user.events.each do |e| %>
+				<%= render 'attending', e: e %>
 			<% end %>
-			<% end %>
+		<% end %>
 		</ul>
 	</div>
 	<div>
-		<h2>Exchanges I Attend</h2>
+		<h2>Events I am hosting</h2>
+		<% if user_signed_in? && current_user.id == @user.id %>
+			<div class="button">
+				<%= link_to("Host a new event!", new_event_path) %>
+			</div>
+		<%end %>
 		<ul class="exchanges">
-			<li class="exchange">
-				<div class="map-icon">Icon</div>
-				<h3>Exchange Name</h3>
-				<p>Address for exchange line 1</p>
-				<p>Address for exchange line 2</p>
-				<p><span>9AM-2PM</span> every sunday</p>
-				<% if user_signed_in? && current_user.id == @user.id %>
-				<a href="">unattend exchange</a>
+			<% if @user.hosted_events && !@user.hosted_events.empty? %>
+				<% @user.hosted_events.each do |e| %>
+					<%= render 'hosting', e: e %>
 				<% end %>
-			</li>
+			<% end %>
 		</ul>
 	</div>
 </section>
@@ -65,7 +62,7 @@
 			<input type="button" value="Submit">
 			<select>
 				<% @items.each do |item| %>
-				<option value="type"><%= item.kind %></option>
+					<option value="type"><%= item.kind %></option>
 				<% end%>
 			</select>
 		</form>
@@ -73,11 +70,9 @@
 	<% end %>
 	<ul class="listings">
 		<% if @user.listings && !@user.listings.empty? %>
-		<% @user.listings.each do |l| %>
-		<%= render 'listing', l: l %>
-		<% end %>
+			<% @user.listings.each do |l| %>
+				<%= render 'listing', l: l %>
+			<% end %>
 		<% end %>
 	</ul>
 </section>
-
-
