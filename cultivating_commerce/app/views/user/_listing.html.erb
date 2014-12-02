@@ -6,8 +6,7 @@
       </div>
       <div class="row">
         <div class="col-xs-5">
-          <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-          <img class="listing-img" src="<%= asset_path 'apple1.jpg' %>">
+          <%= image_tag l.image, alt: "listing-image", class: "listing-img bg-c3 " %>
         </div>
         <div class="col-xs-6">
           <h3 contenteditable="true"><%=l.title%></h3>
