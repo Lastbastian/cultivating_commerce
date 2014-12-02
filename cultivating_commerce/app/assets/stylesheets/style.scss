@@ -182,7 +182,11 @@ a:hover
   border-radius:50px;
   right:30px;
   top:-15px;
-  padding-top: 20px;
+  // border: 1px $c1 solid;
+  :hover {
+    border: 1px $c1 solid;
+    border-radius:50px;
+  }
 }
 
 .day {
