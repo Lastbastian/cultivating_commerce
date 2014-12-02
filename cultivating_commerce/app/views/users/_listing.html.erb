@@ -13,7 +13,9 @@
           <p><%=l.description%></p>
           <p>Quantity: <%=l.quantity%></p>
           <% if user_signed_in? && current_user.id == @user.id %>
-          <div class="button"><a href="">edit</a></div><!--  This flips div into l-edit-options -->
+          <div class="button">
+            <%= link_to("Edit", edit_listing_path(l)) %>
+          </div><!--  This flips div into l-edit-options -->
           <% end %>
           <br><br><br><br>
           <a class="flip" href="">edit</a>

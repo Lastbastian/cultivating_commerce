@@ -4,7 +4,7 @@
   <%= f.input :desired %>
   <%= f.input :quantity %>
   <%= f.input :image %>
-  <%= collection_radio_buttons(:listing, :item_id, Item.all, :id, :category) %>
+  <%= collection_radio_buttons(:listing, :item_id, Item.all, :id, :kind) %>
   <%= f.input :active %>
   <%= f.button :submit %>
 <% end %>
