@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @listing = Listing.new
     @user = User.find_by(id: params[:id])
     @items= Item.all
   end

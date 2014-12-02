@@ -4,14 +4,28 @@ class ListingsController < ApplicationController
     @listing = Listing.new
   end
 
-  def create
-    @listing = Listing.new(listing_params)
-    @listing.user << current_user
+  def edit
+    @listing = Listing.find_by(id: params[:id])
+  end
 
-    if @listing.save
+  def update
+    @listing = Listing.find_by(id: params[:id])
+
+    if @listing.update(listing_params)
       redirect_to current_user
     else
-      render 'new'
+      render 'listings/edit'
+    end
+  end
+
+  def create
+    @listing = Listing.new(listing_params)
+
+    if @listing.save
+      current_user.listings << @listing
+      redirect_to current_user
+    else
+      render 'users/show'
     end
   end
 

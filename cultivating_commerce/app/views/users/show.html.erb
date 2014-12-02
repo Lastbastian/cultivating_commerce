@@ -1,9 +1,6 @@
 <!-- LEFT SIDE -->
 <section class="user col-md-5 bg-c1">
 	<div class="user-info text-center">
-		<% if user_signed_in? && current_user.id == @user.id %>
-		<div><a href="">Edit</a></div>
-		<% end %>
 		 <%= image_tag @user.user_img, alt: "user-img", class: "user-img bg-c3 " %>
 		<h2> <%= @user.first_name %></h2>
 		<p> <%= @user.about %> </p>
@@ -47,28 +44,13 @@
 <!-- RIGHT SIDE -->
 <section class="listings col-md-7">
 	<% if user_signed_in? && current_user.id == @user.id %>
-		<div><%= link_to("Add a listing", new_listing_path) %></div>
 		<div>
-			<ul class="type-icons">
-				<li type="type-icon">Icon</li><!--  ITERATE OVER LIST ONCE DOING AJAX CALL  -->
-			</ul>
-			<form class="listing-form" action="/" type="post">
-				<img src="">
-				<input type="text" name="Title" value="Listing Title">
-				<input type="text" name="Description" value="Add description">
-				<input type="text" name="Quantity" value="Example: 4lbs">
-				<input type="button" value="Submit">
-				<select>
-					<% @items.each do |item| %>
-						<option value="type"><%= item.kind %></option>
-					<% end%>
-				</select>
-			</form>
+			<%= render "listings/form" %>
 		</div>
 	<% end %>
 	<ul class="listings">
 		<% if @user.listings && !@user.listings.empty? %>
-			<% @user.listings.each do |l| %>
+			<% @user.listings.order(:created_at).each do |l| %>
 				<%= render 'listing', l: l %>
 			<% end %>
 		<% end %>
