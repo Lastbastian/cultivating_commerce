@@ -2,10 +2,11 @@
   <div class="map-icon">Icon</div>
   <h3><%= e.title %></h3>
   <p><%= e.address_line_1 %></p>
-  <p><%= e.city+ ", STATE" %></p>
+  <p><%= e.city %></p>
   <p><%= e.zipcode %> </p>
   <p><%= e.description %></p>
   <% if user_signed_in? && current_user.id == @user.id %>
-    <a href="/event/<%= e.id %>/unattend">Cancel event</a>
+    <%= link_to("Cancel event", "/events/"+e.id.to_s+"/cancel") %>
+    <%= link_to("Edit event", edit_event_path(e)) %>
   <% end %>
 </li>
