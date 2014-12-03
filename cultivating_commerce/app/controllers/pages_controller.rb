@@ -19,11 +19,20 @@ class PagesController < ApplicationController
       counter = 0
       @hash = Gmaps4rails.build_markers(@events) do |event, marker|
         counter +=1
+        # binding.pry
+        if(event.hosts.first == current_user)
+          color = "00FFFF" 
+        elsif(event.participants.include?(current_user))
+          color = "98fb98"
+        else
+          color = "ff0000"
+        end
+
         marker.lat event.latitude
         marker.lng event.longitude        
         marker.infowindow render_to_string(:partial => "/events/show", :locals => { :object => event})        
         marker.picture({
-        :url     => "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=#{counter}|FF0000|000000",
+        :url     => "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=#{counter}|#{color}|000000",
         :width   => 32,
         :height  => 32
         })

@@ -1,4 +1,6 @@
-<p>Host: Osman </p>
+<% if object.hosts.first  %>
+  <p>Host: <%= object.hosts.first.email %> </p>
+<% end %>
 <p> Address: <%= object.full_street_address %> </p>
 <p> Date: <%= object.date %> </p>
 <p> Time: <%= object.time %> </p>
