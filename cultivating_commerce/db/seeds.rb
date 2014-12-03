@@ -7,10 +7,10 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-v1 = User.create(first_name:'Chris', last_name:'Bastian', user_name:'chrisb', email:'peacethrubeats@gmail.com',address_line_1:'277A Duncan st.', zipcode:'94131', about:'', phone:'510-717-7373', private_contact: true, user_img:"chris.jpg", user_img:'',password:'12345678',password_confirmation:'12345678')
+v1 = User.create(first_name:'Chris', last_name:'Bastian', user_name:'chrisb', email:'peacethrubeats@gmail.com',address_line_1:'277A Duncan st.', zipcode:'94131', about:'', phone:'510-717-7373', private_contact: true, user_img:"chris.jpg", user_img:'chris.jpg',password:'12345678',password_confirmation:'12345678')
 v2 = User.create(first_name:'Osman', last_name:'Afridi', user_name:'osmana', email: 'osmanisalso@gmail.com', address_line_1:'', zipcode:'', about:'', phone:'(510) 447-3200', private_contact: true, user_img:'', user_img:"osman.jpg",password:'12345678',password_confirmation:'12345678')
 v3 = User.create(first_name:'Marlon', last_name:'Frausto', user_name:'marlonf', email:'marlonjfrausto@gmail.com',  address_line_1:'', zipcode:'', about:'', phone:'(619) 373-6451', private_contact: true, user_img:'', user_img:"murat.jpg",password:'12345678',password_confirmation:'12345678')
-v4 = User.create(first_name:'Chritine', last_name:'Vallaure', user_name:'christinev', email: 'christinevallaure@gmail.com',address_line_1:'', zipcode:'', about:'', phone:'555-555-5555', private_contact: true, user_img:"christine.jpg",password:'12345678',password_confirmation:'12345678')
+v4 = User.create(first_name:'Christine', last_name:'Vallaure', user_name:'christinev', email: 'christinevallaure@gmail.com',address_line_1:'', zipcode:'', about:'', phone:'555-555-5555', private_contact: true, user_img:"christine.jpg",password:'12345678',password_confirmation:'12345678')
 
 10.times do
   User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, user_name:Faker::Internet.user_name, email: Faker::Internet.email, address_line_1: Faker::Address.street_name, zipcode: Faker::Address.zip_code, about: Faker::Lorem.sentence, phone:Faker::PhoneNumber.phone_number, private_contact: false, user_img: "user2" ,password:'12345678',password_confirmation:'12345678')
