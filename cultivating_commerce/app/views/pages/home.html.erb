@@ -64,6 +64,8 @@
             <% @listings.each do |l| %>
               <%= render 'listing', l: l %>
             <% end %>
+          <% else %>
+          Nobody is sharing that, try something else.
           <% end %>
         </ul>
     </section>
