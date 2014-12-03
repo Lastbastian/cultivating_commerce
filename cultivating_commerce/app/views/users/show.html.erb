@@ -7,15 +7,9 @@
 	</div>
 	<div>
 		<a class="button" href="mailto:<%= @user.email %> ">Contact</a>
-		<% if user_signed_in? && current_user.id == @user.id %>
-			<form>
-				<input type="checkbox" name="private_contact" value= true><label = "private_contact"> Make my email private</label>
-			</form>
-		<% end %>
 	</div>
 	<div>
-		<h2>Events I will attend</h2>
-
+		<h2>Exchanges you're attending</h2>
 		<ul class="exchanges">
 		<% if @user.events && !@user.events.empty? %>
 				<% @user.events.each do |e| %>
@@ -25,12 +19,7 @@
 		</ul>
 	</div>
 	<div>
-		<h2>Events I am hosting</h2>
-		<% if user_signed_in? && current_user.id == @user.id %>
-			<div class="button">
-				<%= link_to("Host a new event!", new_event_path) %>
-			</div>
-		<%end %>
+		<h2>Exchanges you're hosting</h2>
 		<ul class="exchanges">
 			<% if @user.hosted_events && !@user.hosted_events.empty? %>
 				<% @user.hosted_events.each do |e| %>
@@ -38,9 +27,15 @@
 				<% end %>
 			<% end %>
 		</ul>
+		<% if user_signed_in? && current_user.id == @user.id %>
+			<div>
+				<button type="button" class="button" data-toggle="modal" data-target="#myAddEvent">Host a new exchange!</button>
+				<!-- Add Exchange Modal -->
+				<%= render "pages/addevent" %>
+			</div>
+		<%end %>
 	</div>
 </section>
-
 <!-- RIGHT SIDE -->
 <section class="listings col-md-7">
 	<% if user_signed_in? && current_user.id == @user.id %>
