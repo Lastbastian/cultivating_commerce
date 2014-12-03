@@ -31,18 +31,21 @@
     </div>
 
     <div class="col-md-7 pull-right">
-      <% if notice %>
-        <p class="alert alert-success"><%= notice %></p>
-      <% end %>
-      <% if alert %>
-        <p class="alert alert-danger"><%= alert %></p>
-      <% end %>
-
       <p class="navbar-text pull-right">
       <% if user_signed_in? %>
-        <strong><%= current_user.email %></strong>
-        <button type="button" class="button" data-toggle="modal" data-target="#myEditprofile">Edit Profile</button>
-        <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+
+      <div class="userinfo2 pull-right text-center">
+           <a href=<%="/users/#{current_user.id}" %>>
+            <%= image_tag current_user.user_img, alt: "usr-image", class: "user-img-xs bg-c4" %>
+            </a>
+      </div>
+      <div class="userinfo1 pull-right text-center">
+        <a href=<%="/users/#{current_user.id}" %>>
+        <strong><%= current_user.first_name %></strong>
+      </a> <br>
+        <%= link_to "logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+      </div>
+
       <% else %>
          <button type="button" class="button" data-toggle="modal" data-target="#mySignup">Sign up</button>
         <button type="button" class="button" data-toggle="modal" data-target="#myLogin">Login</button>

@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20141129190932) do
     t.string   "address_line_1"
     t.string   "city"
     t.string   "zipcode"
+    t.string   "state"
     t.date     "date"
     t.string   "time"
     t.string   "title"
@@ -72,6 +73,8 @@ ActiveRecord::Schema.define(version: 20141129190932) do
     t.string   "user_name"
     t.string   "email",                  default: "", null: false
     t.string   "address_line_1"
+    t.string   "city"
+    t.string   "state"
     t.string   "zipcode"
     t.string   "about"
     t.string   "user_img"
