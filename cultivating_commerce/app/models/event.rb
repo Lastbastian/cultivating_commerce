@@ -20,13 +20,13 @@ class Event < ActiveRecord::Base
   validates :time, 
             :presence => {:message => "Please enter the start and end times of your event (example: 1:00PM-3:00PM)."}
   validates :address_line_1,
-            :presence => {:message => "Please enter your address to create a profile."}
+            :presence => {:message => "Please enter your address to create an event."}
   validates :city,
             :presence => {:message => "Please enter the city for your event."}
   validates :state,
             :presence => {:message => "Please enter the state for your event."}
   validates :zipcode,
-            :presence => true, :format => { :with => ZIP_CODE_REG_EX, :message => "Please enter a valid five digit zip code."} 
+            :presence => true, :format => { :with => ZIP_CODE_REG_EX, :message => "Please enter a valid five digit zip code for your event."} 
 
 
 
