@@ -8,6 +8,8 @@
 
   <div class="page-right col-md-7">
     <section class="filters">
+      <!-- Add Exchange Modal -->
+    <%= render "pages/addevent" %>
 
       <!-- Type filter -->
       <div class="filter-type row p-tb">
@@ -44,7 +46,9 @@
         <div class="col-md-5">
           <p>Specific product:</p>
         </div>
+
          <div class="col-md-7">
+          <button type="button" class="button" data-toggle="modal" data-target="#myAddEvent">Add exchange</button>
         <%= form_tag('/', :method => "get", id: "search-form", class:"search-form") do %>
           <%= text_field_tag :search, params[:search], placeholder: "Search Listings" %>
           <%= submit_tag "Search", :name => nil %>

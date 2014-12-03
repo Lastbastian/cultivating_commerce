@@ -33,6 +33,7 @@
     <div class="col-md-7 pull-right">
       <p class="navbar-text pull-right">
       <% if user_signed_in? %>
+
       <div class="userinfo2 pull-right text-center">
            <a href=<%="/users/#{current_user.id}" %>>
             <%= image_tag current_user.user_img, alt: "usr-image", class: "user-img-xs bg-c4" %>
@@ -44,15 +45,20 @@
       </a> <br>
         <%= link_to "logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
       </div>
+
       <% else %>
-        <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-        <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+         <button type="button" class="button" data-toggle="modal" data-target="#mySignup">Sign up</button>
+        <button type="button" class="button" data-toggle="modal" data-target="#myLogin">Login</button>
       <% end %>
     </div>
   </div>
 </header>
-
-
+<!-- Login modal -->
+<%= render "layouts/login" %>
+ <!-- Sign in modal -->
+<%= render "layouts/signup" %>
+<!-- Edit profile modal -->
+<%= render "layouts/editprofile" %>
 <div class="container-fluid nopadding">
   <div class="col-md-12 nopadding">
 <%= yield %>
