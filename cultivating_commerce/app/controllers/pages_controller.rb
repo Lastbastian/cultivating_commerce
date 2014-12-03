@@ -35,7 +35,7 @@ class PagesController < ApplicationController
     events_unsorted.each do |event|
       event.distance = distance(current_user.coords, event.coords)
     end
-    events_unsorted.sort_by {|obj| obj.distance}
+    events_unsorted.sort_by {|obj| obj.distance}.uniq
   end
 
   def distance loc1, loc2
@@ -47,6 +47,6 @@ class PagesController < ApplicationController
         Math.cos(lat1.to_rad) * Math.cos(lat2.to_rad) *
         Math.sin(dLon/2) * Math.sin(dLon/2);
     c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-    d = 6371 * c * 0.621371;
+    d = 6371 * c;
   end
 end
