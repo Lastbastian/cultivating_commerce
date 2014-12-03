@@ -12,7 +12,5 @@ class User < ActiveRecord::Base
   has_many :events, through: :events_participants
   has_many :hosted_events, through: :events_hosts, source: :event
 
-
-
 end
 
