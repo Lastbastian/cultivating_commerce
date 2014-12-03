@@ -12,24 +12,25 @@ class PagesController < ApplicationController
       @listings = Listing.all
       @hash = Gmaps4rails.build_markers(@events) do |event, marker|
         marker.lat event.latitude
-        marker.lng event.longitude        
-        marker.infowindow render_to_string(:partial => "/events/show", :locals => { :object => event})                
+        marker.lng event.longitude
+        marker.infowindow render_to_string(:partial => "/events/show", :locals => { :object => event})
       end
     elsif !user_signed_in?
       @listings = Listing.search(params[:search]).order("created_at DESC")
       users = @listings.map { |l| l.user }
-      events_unsorted = users.map { |u| u.events }.uniq.flatten      
+      events_unsorted = users.map { |u| u.events }.uniq.flatten
     else
       params[:search] && user_signed_in?
       counter = 0
       @listings = Listing.search(params[:search]).order("created_at DESC")
       users = @listings.map { |l| l.user }
       events_unsorted = users.map { |u| u.events }.uniq.flatten
-      @events = sort_events(events_unsorted)  
+      @events = sort_events(events_unsorted)
+      # @hash_user = current_user.to_gmaps4rails
       @hash = Gmaps4rails.build_markers(@events) do |event, marker|
-        counter +=1        
+        counter +=1
         if(event.hosts.first == current_user)
-          color = "00FFFF" 
+          color = "00FFFF"
         elsif(event.participants.include?(current_user))
           color = "98fb98"
         else
@@ -37,15 +38,23 @@ class PagesController < ApplicationController
         end
 
         marker.lat event.latitude
-        marker.lng event.longitude        
-        marker.infowindow render_to_string(:partial => "/events/show", :locals => { :object => event})        
+        marker.lng event.longitude
+        marker.infowindow render_to_string(:partial => "/events/show", :locals => { :object => event})
         marker.picture({
         :url     => "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=#{counter}|#{color}|000000",
         :width   => 32,
         :height  => 32
         })
-      end      
-    end      
+
+      end
+    end
+    @hash.push(
+      {:lat=> current_user.latitude,
+  :lng=> current_user.longitude,
+  :infowindow=>
+   "<p> Address: #{current_user.full_street_address} </p>\n<br>\n",
+  :picture=>{:url=>"https://chart.googleapis.com/chart?chst=d_map_xpin_icon&chld=pin_star%7Chome%7C00FFFF%7CFF0000", :width=>32, :height=>32}}
+      )
   end
 
   def sort_events(events_unsorted)
