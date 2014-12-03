@@ -1,36 +1,30 @@
-<li class="listing row m-tb">
-  <div class="listing-front col-sm-12 show">
+<li class="listing col-sm-4 row m-tb">
+  <div class="listing-front col-sm-12 ">
     <div class="bg-c1 p-tb">
       <div class="type-icon bg-c1-light abs">
         <p><img src="<%= asset_path 'i-produce.svg' %>"></p>
+        <div id="heart"></div>
       </div>
       <div class="row">
-        <div class="col-xs-5">
+        <div class="col-xs-12">
           <%= image_tag l.image, alt: "listing-image", class: "listing-img bg-c3 " %>
         </div>
-        <div class="col-xs-6">
+        <div class="col-xs-12">
           <h3 contenteditable="true"><%=l.title%></h3>
           <p><%=l.description%></p>
           <p>Quantity: <%=l.quantity%></p>
           <% if user_signed_in? && current_user.id == @user.id %>
-          <div class="button">
+          <br><br>
+         <!--  <i class="fa fa-times"></i>
+          <i class="fa fa-pencil-square-o"></i> -->
+          <div class="button inl">
             <%= link_to("Edit", edit_listing_path(l)) %>
-          </div><!--  This flips div into l-edit-options -->
+          </div>
+          <div class="button inl">
+            <%= link_to("Delete", edit_listing_path(l)) %>
+          </div>
           <% end %>
-          <br><br><br><br>
-          <a class="flip" href="">edit</a>
         </div>
-      </div>
-    </div>
-  </div>
-
-      <!-- BACKSIDE -->
-  <div class="listing-events col-sm-12 hidden">
-    <div class="bg-c1 p-tb">
-      <a class="flip text-right" href="">return</a>
-      <div class="l-back center">
-        <a class="button" href="">Edit</a>
-        <a class="button" href="">Delete</a>
       </div>
     </div>
   </div>
