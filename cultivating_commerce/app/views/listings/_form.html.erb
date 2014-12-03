@@ -1,13 +1,51 @@
-<!-- ADD A PRODUCT -->
+<!-- ADD AN ITEM -->
+
+    <div class="button text-center add-button">
+    <a href="">Add another item</a>
+  </div>
 
 
-<%= simple_form_for @listing do |f| %>
-  <%= f.input :title %>
-  <%= f.input :description %>
-  <%= f.input :desired %>
-  <%= f.input :quantity %>
-  <%= f.input :image %>
-  <%= collection_radio_buttons(:listing, :item_id, Item.all, :id, :kind) %>
-  <%= f.input :active %>
-  <%= f.button :submit %>
-<% end %>
+<div class="row m-tb">
+  <div class="col-sm-12">
+    <div class="add-product p-tb hide">
+      <div class="row">
+  <div class="col-md-12">
+          <ul class="type-icons text-center">
+            <!-- will be created dynamically -->
+            <li class="type-icon bg-c1-light inl">
+              <img src="<%= asset_path 'i-produce.svg' %>">
+            </li>
+            <li class="type-icon bg-c1-light inl">
+               <img src="<%= asset_path 'i-eggs_dairy.svg' %>">
+            </li>
+            <li class="type-icon bg-c1-light inl">
+               <img src="<%= asset_path 'i-meat_fish.svg' %>">
+            </li>
+            <li class="type-icon bg-c1-light inl">
+               <img src="<%= asset_path 'i-bakery.svg' %>">
+            </li>
+            <li class="type-icon bg-c1-light inl">
+               <img src="<%= asset_path 'i-pantry.svg' %>">
+            </li>
+            <li class="type-icon bg-c1-light inl">
+               <img src="<%= asset_path 'i-herbs_spices.svg' %>">
+            </li>
+          </ul><br><br>
+        </div>
+    </div>
+      <div class="row">
+        <div class="col-xs-5">
+          <img class="test" src="">
+        </div>
+        <div class="col-xs-7">
+          <%= simple_form_for @listing do |f| %>
+          <%= f.input :title, :class => "input"%>
+          <%= f.input :description, :class => "input"%>
+          <%= f.input :quantity, :class => "input" %>
+          <%= f.button :submit, :class => "button submit-item"%>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

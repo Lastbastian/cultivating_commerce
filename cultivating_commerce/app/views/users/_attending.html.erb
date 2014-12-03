@@ -1,12 +1,13 @@
 <li class="exchange">
-  <div class="map-icon">Icon</div>
   <h3><%= e.title %></h3>
-  <p><%= e.address_line_1 %></p>
-  <p><%= e.city %></p>
-  <p><%= e.zipcode %> </p>
-  <p><%= e.description %></p>
+  <p><%= e.address_line_1 %><br>
+  <%= e.city %><br>
+  <%= e.zipcode %><br><br>
+  <%= e.description %></p>
+  <p class="small bold text-right">
   <% if user_signed_in? && current_user.id == @user.id %>
-    <%= link_to("Cancel attendance", "/events/"+e.id.to_s+"/unattend") %>
-    <%= link_to("Edit event", edit_event_path(e)) %>
-  <%end%>
+    <%= link_to("CANCEL", "/events/"+e.id.to_s+"/unattend") %>
+    <%= link_to("EDIT", edit_event_path(e)) %>
+  <%end%><br><br>
+</p>
 </li>
