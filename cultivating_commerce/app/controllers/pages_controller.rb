@@ -47,14 +47,14 @@ class PagesController < ApplicationController
         })
 
       end
+      @hash.push(
+        {:lat=> current_user.latitude,
+          :lng=> current_user.longitude,
+          :infowindow=>
+           "<p> Address: #{current_user.full_street_address} </p>\n<br>\n",
+          :picture=>{:url=>"https://chart.googleapis.com/chart?chst=d_map_xpin_icon&chld=pin_star%7Chome%7C00FFFF%7CFF0000", :width=>32, :height=>32}}
+        )
     end
-    @hash.push(
-      {:lat=> current_user.latitude,
-  :lng=> current_user.longitude,
-  :infowindow=>
-   "<p> Address: #{current_user.full_street_address} </p>\n<br>\n",
-  :picture=>{:url=>"https://chart.googleapis.com/chart?chst=d_map_xpin_icon&chld=pin_star%7Chome%7C00FFFF%7CFF0000", :width=>32, :height=>32}}
-      )
   end
 
   def sort_events(events_unsorted)
