@@ -1,9 +1,11 @@
 <section class="page-left map col-md-5 nopadding">
-  <div class="button abs mapbutton">
-    <a href="">add exchange</a>
-  </div>
+
+
       <!-- MAP -->
   <div class="googlemap" id="multi_markers"></div>
+  <div class="button abs mapbutton">
+    <a data-toggle="modal" data-target="#myAddEvent">add exchange</a>
+  </div>
 </section>
 
   <div class="page-right col-md-7">
@@ -14,7 +16,7 @@
       <!-- Type filter -->
       <div class="filter-type row p-tb">
         <div class="col-md-2">
-          <p>Type:</p>
+          <h2 class="bold xl">TYPE</h2>
         </div>
         <div class="col-md-10">
           <ul class="type-icons text-center">
@@ -37,18 +39,17 @@
             <li class="type-icon bg-c1-light inl">
                <img src="<%= asset_path 'i-herbs_spices.svg' %>">
             </li>
-
           </ul>
         </div>
       </div>
       <!-- Search filed -->
       <div class="filter-search row p-tb">
         <div class="col-md-5">
-          <p>Specific product:</p>
+          <h2 class="bold xl">SEARCH</h2>
         </div>
 
          <div class="col-md-7">
-          <button type="button" class="button" data-toggle="modal" data-target="#myAddEvent">Add exchange</button>
+
         <%= form_tag('/', :method => "get", id: "search-form", class:"search-form") do %>
           <%= text_field_tag :search, params[:search], placeholder: "Search Listings" %>
           <%= submit_tag "Search", :name => nil %>
@@ -63,6 +64,8 @@
             <% @listings.each do |l| %>
               <%= render 'listing', l: l %>
             <% end %>
+          <% else %>
+          Nobody is sharing that, try something else.
           <% end %>
         </ul>
     </section>

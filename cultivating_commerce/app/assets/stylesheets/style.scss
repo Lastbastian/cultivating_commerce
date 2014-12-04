@@ -10,6 +10,7 @@ $c4 : #66df9a;
 
 
 
+
 .bg-c1{
   background-color: $c1;
 }
@@ -26,6 +27,9 @@ $c4 : #66df9a;
 }
 .bg-c4{
   background-color: $c4;
+}
+.bg-w{
+  background-color: white;
 }
 
 
@@ -61,9 +65,15 @@ $p: 20px;
   padding: $m;
 }
 
+.p-lr {
+  padding: 0 $p;
+}
 
 
 
+.height {
+  height: 450px;
+}
 
 
 /******************************************
@@ -72,7 +82,7 @@ $p: 20px;
 
 
 body {
-     font-size: 13px;
+     font-size: 12px;
      line-height: 1.4;
      font-family: 'Open Sans', sans-serif;
      color: $text;
@@ -86,10 +96,21 @@ ul {
 
  h1 {
   font-size: 20px;
+  font-family: 'Open Sans', sans-serif;
 }
 
 h3 {
   font-size: 16px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+}
+
+.bold{
+  font-weight: 700;
+}
+
+.small {
+  font-size: 10px;
 }
 
 a {
@@ -205,6 +226,7 @@ header {
   right:30px;
   top:-15px;
   // border: 1px $c1 solid;
+    z-index: 1000;
   :hover {
     border: 1px $c1 solid;
     border-radius:50px;
@@ -230,7 +252,7 @@ position: fixed;
 
 .mapbutton {
   right: 5px;
-  top: 10px;
+  top: 5px;
 }
 
 /******************************************
@@ -240,6 +262,8 @@ position: fixed;
 .listing-img {
  width: 100%;
 }
+
+
 
 .user-img-s {
   width:70px;
@@ -266,6 +290,12 @@ position: fixed;
   bottom: 0;
 }
 
+.listing {
+padding-left: 0;
+padding-right: 0;
+margin-left: 0;
+margin-right: 0;
+}
 
 /******************************************
 /* USER
@@ -273,8 +303,82 @@ position: fixed;
 
 .user-img {
 border: solid 1px white;
-height: 150px;
-width: 150px;
+width: 100%;
+}
+
+
+.test {
+width: 100%;
+height: 250px;
+background-color: $c3;
+ &:hover {
+  background-color: lighten($c3, 10%);
+  }
+}
+
+.red {
+  background-color: red;
+}
+
+.user {
+  padding: 0 30px;
+  height: 3000px;
+}
+/******************************************
+/* ADD PRODUCT
+/*******************************************/
+
+.add-product {
+  border: dashed 2px $c1;
+
+}
+
+.input {
+  border: 1px dotted #999;
+  border-radius: 0;
+
+  -webkit-appearance: none;
+}
+
+.add-button {
+  margin-top: 20px;
+}
+
+/******************************************
+/* FORMS
+/*******************************************/
+
+.floating-label-form-group input, .floating-label-form-group textarea {
+z-index: 1;
+position: relative;
+padding-right: 0;
+padding-left: 0;
+border: 0;
+border-radius: 0;
+font-size: 1.5em;
+background: 0 0;
+box-shadow: none!important;
+resize: none;
+}
+
+.form-control, input {
+border-width: 2px;
+-webkit-box-shadow: none;
+box-shadow: none;
+}
+
+.form-control {
+display: block;
+width: 100%;
+height: 43px;
+padding: 10px 15px;
+line-height: 1.42857143;
+color: #2c3e50;
+transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+input, button, select, textarea {
+font-family: inherit;
 }
 
 

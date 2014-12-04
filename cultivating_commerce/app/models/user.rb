@@ -12,5 +12,16 @@ class User < ActiveRecord::Base
   has_many :events, through: :events_participants
   has_many :hosted_events, through: :events_hosts, source: :event
 
+  geocoded_by :full_street_address
+  after_validation :geocode
+
+  def full_street_address
+    "#{self.address_line_1}, #{self.city}, #{self.zipcode}"
+  end
+
+  def coords
+    [self.latitude.to_f, self.longitude.to_f]
+  end
+
 end
 
