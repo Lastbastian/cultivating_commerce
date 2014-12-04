@@ -1,7 +1,7 @@
 <li class="listing col-sm-6 row m-tb">
   <!-- FRONTSIDE -->
   <div class="listing-front col-sm-12">
-    <div class="bg-c1 p-tb">
+    <div class="bg-c1 height p-tb">
       <div class="type-icon bg-c1-light abs">
         <p><%= image_tag l.item.category, alt: "item-category", class: "" %></p>
         <!-- <div id="heart"></div> -->
@@ -31,48 +31,40 @@
 
   <!-- BACKSIDE -->
   <div class="listing-events col-sm-12">
-    <div class="bg-c4 height p-tb">
+    <div class="bg-c4 height overflow p-tb">
       <div class="row">
-        <div class="listing-event col-xs-12">
-          <div>
-            <% if l.user.hosted_events.empty? %>
-              <p>I am not hosting any exchanges<p>
-            <% else %>
-              <h3>Exchanges i'm hosting</h3>
+        <div class="listing-event  c-w  col-xs-12">
+
+              <h3>EXCHANGES:</h3>
               <ul>
-                <li>
+                <li class="exchange">
                     <% l.user.hosted_events.each do |e| %>
-                      <p><strong><%= e.title %></strong></p>
+                      <h3><%= e.title %></h3>
                       <p><%= e.time %> on <%= e.date %></p>
                       <p><%= e.description %></p>
                       <p><%= e.address_line_1 %> <%= e.city %></p>
-                      <strong><%= link_to("Join", "/events/"+e.id.to_s+"/attend") %></strong>
+                      <strong><%= link_to("JOIN", "/events/"+e.id.to_s+"/attend") %></strong>
                     <% end %>
                 </li>
               </ul>
-            <% end %>
-            <% if l.user.events.empty? %>
-              <p>I am not attending an exchanges<p>
-            <% else %>
               <ul>
-                <h3>Exchanges i'm attending</h3>
                 <ul>
-                  <li>
+                  <li class="exchange">
                     <% l.user.events.each do |e| %>
-                      <p><strong><%= e.title %></strong>
+                    <hr/>
+                      <h3><%= e.title %></h3>
                       <p><%= e.time %> on <%= e.date %></p>
                       <p><%= e.description %></p>
                       <p><%= e.address_line_1 %> <%= e.city %></p>
-                      <strong><%= link_to("Join", "/events/"+e.id.to_s+"/attend") %><strong>
+                      <strong><%= link_to("JOIN", "/events/"+e.id.to_s+"/attend") %><strong>
                     <% end %>
                 </li>
-              </ul>
-            <% end %>
-          </div>
+                <hr/>
+              </ul><br><br>
         </div>
         <div class="listing-event col-xs-12">
-          <br><br><br><br><br><br><br>
-        <a class="small bold flip-back" href="">RETURN</a>
+          <br>
+        <a class="small c-w bold flip-back button" href="">RETURN</a>
         </div>
       </div>
     </div>
