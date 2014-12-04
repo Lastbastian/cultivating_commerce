@@ -6,8 +6,7 @@
   <%= e.description %></p>
   <p class="small bold text-right">
   <% if user_signed_in? && current_user.id == @user.id %>
-    <%= link_to("CANCEL", "/events/"+e.id.to_s+"/unattend") %>
-    <%= link_to("EDIT", edit_event_path(e)) %>
+    <%= link_to("CANCEL", "/events/"+e.id.to_s+"/unattend") %> | <button type="button" data-toggle="modal" data-target="#myModal">Launch modal</button>
   <%end%><br><br>
 </p>
 </li>
