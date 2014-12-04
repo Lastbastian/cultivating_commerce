@@ -2,29 +2,31 @@ require 'rails_helper'
 
 RSpec.describe Listing, :type => :model do
 
+  let(:valid_listing) { build(:listing) }
+  let(:invalid_listing) { build(:listing, title:nil, description: nil) }
+
   context "with invalid params" do
     it "should fail validation" do
-      expect(Listing.create).to_not be_valid
+      expect(invalid_listing).to_not be_valid
     end
 
     it "should not create a Listing in the database" do
-      expect{ Listing.create}.to_not change{Listing.count}
+      expect{ invalid_listing.save }.to_not change{Listing.count}
     end
   end
 
   context "with valid params" do
     it "should pass validation" do
-      expect(Listing.create(title: "test", description:"very good")).to be_valid
+      expect(valid_listing).to be_valid
     end
 
     it "should increase the Listing count in the db" do
-      expect { Listing.create(title: "test", description: "very good") }.to change { Listing.count }.by(1)
+      expect { valid_listing.save }.to change { Listing.count }.by(1)
     end
 
     it "downcases the title" do
-      le = Listing.create(title: "TEST", description: "very good")
-
-      expect(le.title).to eq(le.title.downcase)
+      valid_listing.save
+      expect(valid_listing.title).to eq(valid_listing.title.downcase)
     end
   end
 end
