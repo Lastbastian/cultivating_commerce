@@ -20,25 +20,12 @@
         </div>
         <div class="col-md-10">
           <ul class="type-icons text-center">
+          <% @items.each do |item| %>
             <!-- will be created dynamically -->
             <li class="type-icon bg-c1-light inl">
-              <img src="<%= asset_path 'i-produce.svg' %>">
+              <%= image_tag item.category, alt: "item-category", class: "" %>
             </li>
-            <li class="type-icon bg-c1-light inl">
-               <img src="<%= asset_path 'i-eggs_dairy.svg' %>">
-            </li>
-            <li class="type-icon bg-c1-light inl">
-               <img src="<%= asset_path 'i-meat_fish.svg' %>">
-            </li>
-            <li class="type-icon bg-c1-light inl">
-               <img src="<%= asset_path 'i-bakery.svg' %>">
-            </li>
-            <li class="type-icon bg-c1-light inl">
-               <img src="<%= asset_path 'i-pantry.svg' %>">
-            </li>
-            <li class="type-icon bg-c1-light inl">
-               <img src="<%= asset_path 'i-herbs_spices.svg' %>">
-            </li>
+          <% end %>
           </ul>
         </div>
       </div>

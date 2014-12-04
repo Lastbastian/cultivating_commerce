@@ -11,25 +11,11 @@
       <div class="row">
   <div class="col-md-12">
           <ul class="type-icons text-center">
-            <!-- will be created dynamically -->
+        <% @items.each do |item| %>
             <li class="type-icon bg-c1-light inl">
-              <img src="<%= asset_path 'i-produce.svg' %>">
+              <%= image_tag item.category, alt: "item-category", class: "" %>
             </li>
-            <li class="type-icon bg-c1-light inl">
-               <img src="<%= asset_path 'i-eggs_dairy.svg' %>">
-            </li>
-            <li class="type-icon bg-c1-light inl">
-               <img src="<%= asset_path 'i-meat_fish.svg' %>">
-            </li>
-            <li class="type-icon bg-c1-light inl">
-               <img src="<%= asset_path 'i-bakery.svg' %>">
-            </li>
-            <li class="type-icon bg-c1-light inl">
-               <img src="<%= asset_path 'i-pantry.svg' %>">
-            </li>
-            <li class="type-icon bg-c1-light inl">
-               <img src="<%= asset_path 'i-herbs_spices.svg' %>">
-            </li>
+          <% end %>
           </ul><br><br>
         </div>
     </div>
@@ -38,12 +24,14 @@
           <img class="test" src="">
         </div>
         <div class="col-xs-7">
-          <%= simple_form_for @listing do |f| %>
-          <%= f.input :title, :class => "input"%>
-          <%= f.input :description, :class => "input"%>
-          <%= f.input :quantity, :class => "input" %>
-          <%= f.button :submit, :class => "button submit-item"%>
-          <% end %>
+        <%= simple_form_for @listing do |f| %>
+    <%= f.input :title %>
+    <%= f.input :description %>
+    <%= f.input :quantity %>
+    <%= collection_select(:listing, :item_id, Item.all, :id, :kind) %>
+    <%= f.input :image %>
+    <%= f.button :submit %>
+    <% end %>
         </div>
       </div>
     </div>
