@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(version: 20141129190932) do
     t.string   "description"
     t.string   "desired"
     t.string   "quantity"
-    t.string   "image"
+    t.string   "image",       default: "orange2.jpg"
     t.boolean  "active"
     t.integer  "item_id"
     t.integer  "user_id"
