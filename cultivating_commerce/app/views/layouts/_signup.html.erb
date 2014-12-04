@@ -3,7 +3,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title" id="myModalLabel">Sign up <br><p style="c-c4 small;"> You need to sign up before adding an exchange</span></p>
+        <h2 class="modal-title bold c-c4 modalextra nopadding" id="myModalLabel">Sign up </h2><br><p style="c-c4 small;"> You need to sign up before adding an exchange</span></p>
       </div>
       <div class="modal-body">
         <%= form_for(:user, :url => registration_path(:user), class: "form") do |f| %>
