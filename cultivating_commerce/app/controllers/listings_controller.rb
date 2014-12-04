@@ -29,11 +29,11 @@ class ListingsController < ApplicationController
     end
   end
 
-  def remove
+  def destroy
     @listing = Listing.find_by(id: params[:id])
     @listing.destroy
 
-    redirect_to @user
+    redirect_to current_user
   end
 
   def activate
@@ -41,7 +41,7 @@ class ListingsController < ApplicationController
     @listing.active = true
     @listing.save
 
-    redirect_to @user
+    redirect_to current_user
   end
 
   def deactivate
@@ -49,7 +49,7 @@ class ListingsController < ApplicationController
     @listing.active = false
     @listing.save
 
-    redirect_to @user
+    redirect_to current_user
   end
 
   private

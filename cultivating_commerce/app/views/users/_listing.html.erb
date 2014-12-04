@@ -21,7 +21,7 @@
             <%= link_to("Edit", edit_listing_path(l)) %>
           </div>
           <div class="button inl">
-            <%= link_to("Delete", edit_listing_path(l)) %>
+            <%= link_to("Delete", listing_path(l), method: :delete) %>
           </div>
           <% end %>
         </div>
