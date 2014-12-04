@@ -35,31 +35,39 @@
       <div class="row">
         <div class="listing-event col-xs-12">
           <div>
-            <h3>Exchanges i'm hosting</h3>
-            <ul>
-              <li>
-                  <% l.user.hosted_events.each do |e| %>
-                    <p><strong><%= e.title %></strong></p>
-                    <p><%= e.time %> on <%= e.date %></p>
-                    <p><%= e.description %></p>
-                    <p><%= e.address_line_1 %> <%= e.city %></p>
-                    <a href="/">Join this hosted exchange!</a>
-                  <% end %>
-              </li>
-            </ul>
-            <ul>
-              <h3>Exchanges i'm attending</h3>
+            <% if l.user.hosted_events.empty? %>
+              <p>I am not hosting any exchanges<p>
+            <% else %>
+              <h3>Exchanges i'm hosting</h3>
               <ul>
                 <li>
-                  <% l.user.events.each do |e| %>
-                    <p><strong><%= e.title %></strong>
-                    <p><%= e.time %> on <%= e.date %></p>
-                    <p><%= e.description %></p>
-                    <p><%= e.address_line_1 %> <%= e.city %></p>
-                    <a href="/">Attend this exchange!</a>
-                  <% end %>
-              </li>
-            </ul>
+                    <% l.user.hosted_events.each do |e| %>
+                      <p><strong><%= e.title %></strong></p>
+                      <p><%= e.time %> on <%= e.date %></p>
+                      <p><%= e.description %></p>
+                      <p><%= e.address_line_1 %> <%= e.city %></p>
+                      <strong><%= link_to("Join", "/events/"+e.id.to_s+"/attend") %></strong>
+                    <% end %>
+                </li>
+              </ul>
+            <% end %>
+            <% if l.user.events.empty? %>
+              <p>I am not attending an exchanges<p>
+            <% else %>
+              <ul>
+                <h3>Exchanges i'm attending</h3>
+                <ul>
+                  <li>
+                    <% l.user.events.each do |e| %>
+                      <p><strong><%= e.title %></strong>
+                      <p><%= e.time %> on <%= e.date %></p>
+                      <p><%= e.description %></p>
+                      <p><%= e.address_line_1 %> <%= e.city %></p>
+                      <strong><%= link_to("Join", "/events/"+e.id.to_s+"/attend") %><strong>
+                    <% end %>
+                </li>
+              </ul>
+            <% end %>
           </div>
         </div>
         <div class="listing-event col-xs-12">

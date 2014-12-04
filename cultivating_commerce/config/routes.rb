@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   get 'events/:id/unattend' => 'events#unattend'
   get 'events/:id/cancel' => 'events#cancel'
+  get 'events/:id/attend' => 'events#attend'
 
   resources :users
   resources :events
