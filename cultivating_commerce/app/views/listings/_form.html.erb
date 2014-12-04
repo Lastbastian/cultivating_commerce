@@ -24,14 +24,16 @@
           <img class="test" src="">
         </div>
         <div class="col-xs-7">
+
         <%= simple_form_for @listing do |f| %>
-    <%= f.input :title %>
-    <%= f.input :description %>
-    <%= f.input :quantity %>
+    <%= f.input :title, :class => "input"%>
+    <%= f.input :description, :class => "input" %>
+    <%= f.input :quantity, :class => "input" %>
     <%= collection_select(:listing, :item_id, Item.all, :id, :kind) %>
     <%= f.input :image %>
-    <%= f.button :submit %>
+    <%= f.button :submit , :class => "submit-item button" %>
     <% end %>
+
         </div>
       </div>
     </div>

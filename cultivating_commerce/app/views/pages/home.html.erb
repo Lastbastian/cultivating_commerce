@@ -21,14 +21,14 @@
 
       <!-- Type filter -->
       <div class="filter-type row p-tb">
-        <div class="col-md-2">
+        <div class="col-md-3">
           <h2 class="bold xl">TYPE</h2>
         </div>
-        <div class="col-md-10">
+        <div class="col-md-9">
           <ul class="type-icons text-center">
           <% @items.each do |item| %>
             <!-- will be created dynamically -->
-            <li class="type-icon bg-c1-light inl">
+            <li class="type-icon bg-c1-light m-lr inl">
               <%= image_tag item.category, alt: "item-category", class: "" %>
             </li>
           <% end %>
@@ -37,17 +37,18 @@
       </div>
       <!-- Search filed -->
       <div class="filter-search row p-tb">
-        <div class="col-md-5">
-          <h2 class="bold xl">SEARCH</h2>
+        <div class="col-md-3">
+          <h2 class="bold xl nopadding">SEARCH</h2>
         </div>
 
          <div class="col-md-7">
-
-        <%= form_tag('/', :method => "get", id: "search-form", class:"search-form") do %>
-          <%= text_field_tag :search, params[:search], placeholder: "Search Listings" %>
-          <%= submit_tag "Search", :name => nil %>
-        <% end %>
-        </div>
+          <%= form_tag('/', :method => "get", id: "search-form", class: "form f-width") do %>
+            <%= text_field_tag :search, params[:search], placeholder: "Search Listings", class: "form-control"%>
+          </div>
+            <div class="col-md-2">
+            <%= submit_tag "GO", :name => nil, class: "f-width button -c1" %>
+          <% end %>
+          </div>
       </div>
     </section>
 
@@ -58,7 +59,8 @@
               <%= render 'listing', l: l %>
             <% end %>
           <% else %>
-          Nobody is sharing that, try something else.
+          <h2 class="p-tb text-center c-c3 bold xl">
+          SORRY, NOBODY IS SHARING THIS,<br> TRY ANOTHER ONE</h2>
           <% end %>
         </ul>
     </section>
