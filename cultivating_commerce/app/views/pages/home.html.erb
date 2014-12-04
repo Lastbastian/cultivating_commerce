@@ -3,14 +3,20 @@
 
       <!-- MAP -->
   <div class="googlemap" id="multi_markers"></div>
-  <div class="button abs mapbutton">
-    <a data-toggle="modal" data-target="#myAddEvent">add exchange</a>
-  </div>
+  <% if user_signed_in? && current_user.id == @user.id %>
+    <div class="button abs mapbutton">
+      <a data-toggle="modal" data-target="#myAddEvent">Add Exchange</a>
+    </div>
+  <% else %>
+    <div class="button abs mapbutton">
+      <a data-toggle="modal" data-target="#mySignup">Add Exchange</a>
+    </div>
+  <% end %>
 </section>
 
   <div class="page-right col-md-7">
     <section class="filters">
-      <!-- Add Exchange Modal -->
+    <!-- Add Exchange Modal -->
     <%= render "pages/addevent" %>
 
       <!-- Type filter -->
@@ -75,7 +81,7 @@
   var handler = Gmaps.build('Google');
   handler.buildMap({
     provider: {
-      zoom:      0,
+      zoom:      2,
       center:    new google.maps.LatLng(0, 0)
     },
     internal: {id: 'multi_markers'}},
