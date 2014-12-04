@@ -24,7 +24,6 @@ class ListingsController < ApplicationController
     if @listing.save
       current_user.listings << @listing
       redirect_to current_user
-      p @listing.title
     else
       render 'users/show'
     end
