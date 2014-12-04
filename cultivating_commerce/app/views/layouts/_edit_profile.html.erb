@@ -6,7 +6,7 @@
         <h4 class="modal-title" id="myModalLabel">Edit profile</h4>
       </div>
       <div class="modal-body">
-        <%= form_for(:user, :url => edit_user_registration_path(:user)) do |f| %>
+        <%= form_for @user do |f| %>
           <div class="field">
             <%= f.label :first_name %><br />
             <%= f.text_field :first_name, autofocus: true %>
@@ -23,16 +23,8 @@
           </div>
 
           <div class="field">
-            <%= f.label :password %>
-            <% if @validatable %>
-            <em>(<%= @minimum_password_length %> characters minimum)</em>
-            <% end %><br />
-            <%= f.password_field :password, autocomplete: "off" %>
-          </div>
-
-          <div class="field">
-            <%= f.label :password_confirmation %><br />
-            <%= f.password_field :password_confirmation, autocomplete: "off" %>
+            <%= f.label :keep_my_information_private %><br />
+            <%= f.check_box :private_contact  %> (keep my email address private)
           </div>
 
           <div class="field">
