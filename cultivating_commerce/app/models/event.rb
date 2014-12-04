@@ -14,20 +14,18 @@ class Event < ActiveRecord::Base
   has_many :participants, class_name: "User", through: :events_participants
   has_many :hosts, class_name: "User", through: :events_hosts
 
-  validates :title, 
+  validates :title,
             :presence => {:message => "Your event requires a title."}
   validates :date,
             :presence => {:message => "Please choose a date for your event."}
-  validates :time, 
+  validates :time,
             :presence => {:message => "Please enter the start and end times of your event (example: 1:00PM-3:00PM)."}
   validates :address_line_1,
             :presence => {:message => "Please enter your address to create an event."}
   validates :city,
             :presence => {:message => "Please enter the city for your event."}
-  validates :state,
-            :presence => {:message => "Please enter the state for your event."}
   validates :zipcode,
-            :presence => true, :format => { :with => ZIP_CODE_REG_EX, :message => "Please enter a valid five digit zip code for your event."} 
+            :presence => true, :format => { :with => ZIP_CODE_REG_EX, :message => "Please enter a valid five digit zip code for your event."}
 
 
 
