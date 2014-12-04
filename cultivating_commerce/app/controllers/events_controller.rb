@@ -3,7 +3,7 @@ class EventsController < ApplicationController
     @event = Event.new
   end
 
-  def create
+  def create #create a hosted event
     @event = Event.new(event_params)
     @event.hosts << current_user
     if @event.save
@@ -31,6 +31,13 @@ class EventsController < ApplicationController
   def cancel
     @event = Event.find_by(id: params[:id])
     @event.destroy
+    redirect_to current_user
+  end
+
+  def attend
+    @event = Event.find_by(id: params[:id])
+    # @event.participants.create(event_id: (params[:id]), participant_id:(current_user.id))
+    EventsParticipant.create(event_id: (params[:id]), participant_id:(current_user.id))
     redirect_to current_user
   end
 
