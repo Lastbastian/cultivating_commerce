@@ -3,12 +3,8 @@ class Listing < ActiveRecord::Base
   belongs_to :user
   before_save :format
 
-  # validates :title,
-  #           :presence => {:message => "Your listing requires a title."}
-  # validates :description,
-  #           :presence => {:message => "Your listing requires a description."}
-  # validates :quantity,
-  #           :presence => {:message => "Please enter the quantity available for exchange."}
+  validates :title, presence: true
+  validates :description, presence: true
 
   def format
     self.title.downcase!
