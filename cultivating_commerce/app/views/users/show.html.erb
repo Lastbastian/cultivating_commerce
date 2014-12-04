@@ -3,16 +3,21 @@
 	<div class="bg-w ">
 	<div class="user-info">
 		 <%= image_tag @user.user_img, alt: "user-img", class: "user-img bg-c3 " %>
-		<h2> <%= @user.first_name %></h2>
-		<p> <%= @user.about %> </p>
+		<h2><%= @user.first_name %></h2>
+		<p><%= @user.about %></p>
 	</div>
 	<div class="text-center">
+		<% if @user.private_contact == true ||  current_user.id == @user.id %>
 		<a href="mailto:<%= @user.email %> "><i class="fa fa-envelope-o fa-3x"></i></a><br><br>
+		<% end %>
 		<% if user_signed_in? && current_user.id == @user.id %>
 			<p class="small">
-				<a value= true><a = "private_contact"> (make my email private)</a>
+				<div class="button mapbutton">
+    		<a data-toggle="modal" data-target="#myEditprofile">Edit profile</a>
+  		</div>
 			</p>
 			<br>
+			<%= render "layouts/edit_profile" %>
 		<% end %>
 	</div>
 </div>

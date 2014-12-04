@@ -3,7 +3,7 @@
 
       <!-- MAP -->
   <div class="googlemap" id="multi_markers"></div>
-  <% if user_signed_in? && current_user.id == @user.id %>
+  <% if user_signed_in? %>
     <div class="button abs mapbutton">
       <a data-toggle="modal" data-target="#myAddEvent">Add Exchange</a>
     </div>
