@@ -28,7 +28,7 @@ $(".add-button").on("click", function(e){
   });
 
 $(".submit-item").on("click", function(e){
-       e.preventDefault();
+       // e.preventDefault();
       $(".add-product").addClass("hide");
       $(".add-button").show();
   });
