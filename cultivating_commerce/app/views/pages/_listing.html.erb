@@ -46,7 +46,7 @@
                       <p><%= e.time %> on <%= e.date %></p>
                       <p><%= e.description %></p>
                       <p><%= e.address_line_1 %> <%= e.city %></p>
-                      <%= link_to("Join", update_events_path(e)) %>
+                      <strong><%= link_to("Join", "/events/"+e.id.to_s+"/attend") %></strong>
                     <% end %>
                 </li>
               </ul>
@@ -63,7 +63,7 @@
                       <p><%= e.time %> on <%= e.date %></p>
                       <p><%= e.description %></p>
                       <p><%= e.address_line_1 %> <%= e.city %></p>
-                      <%= link_to("Join", "/events/"+e.id.to_s+"/attend") %>
+                      <strong><%= link_to("Join", "/events/"+e.id.to_s+"/attend") %><strong>
                     <% end %>
                 </li>
               </ul>
