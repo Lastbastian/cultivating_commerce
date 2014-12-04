@@ -7,6 +7,7 @@ end
 class PagesController < ApplicationController
 
   def home
+    @items = Item.all
     if !params[:search]
       @events = Event.all
       @listings = Listing.all
