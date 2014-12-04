@@ -36,7 +36,7 @@ $(".submit-item").on("click", function(e){
 
 // SORTABLE
 
- $('ul').sortable();
+ // $('ul').sortable();
 
 
 });

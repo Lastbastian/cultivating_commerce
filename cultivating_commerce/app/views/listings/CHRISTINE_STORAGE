@@ -6,3 +6,14 @@
     <%= f.input :image %>
     <%= f.button :submit %>
     <% end %>
+
+
+    <div class="col-md-12">
+          <ul class="type-icons text-center">
+        <% @items.each do |item| %>
+            <li class="type-icon bg-c1-light inl">
+              <%= image_tag item.category, alt: "item-category", class: "" %>
+            </li>
+          <% end %>
+          </ul><br><br>
+        </div>
