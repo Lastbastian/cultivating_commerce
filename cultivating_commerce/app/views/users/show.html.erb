@@ -1,5 +1,5 @@
 <!-- LEFT SIDE -->
-<section class="user col-md-3 bg-c1 text-center">
+<section class="user col-md-3 bg-c2  text-center">
 	<div class="bg-w ">
 	<div class="user-info">
 		 <%= image_tag @user.user_img, alt: "user-img", class: "user-img bg-c3 " %>
@@ -59,7 +59,7 @@
 </section>
 
 <!-- RIGHT SIDE -->
-<section class="listings col-md-9">
+<section class="listings bg-c col-md-9">
 	<% if user_signed_in? && current_user.id == @user.id %>
 		<div>
 			<%= render "listings/form" %>

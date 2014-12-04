@@ -4,17 +4,17 @@
       <!-- MAP -->
   <div class="googlemap" id="multi_markers"></div>
   <% if user_signed_in? %>
-    <div class="button abs mapbutton">
+    <div class="button-d abs mapbutton">
       <a data-toggle="modal" data-target="#myAddEvent">Add Exchange</a>
     </div>
   <% else %>
-    <div class="button abs mapbutton">
+    <div class="button-d abs mapbutton">
       <a data-toggle="modal" data-target="#mySignup">Add Exchange</a>
     </div>
   <% end %>
 </section>
 
-  <div class="page-right col-md-7">
+  <div class="page-right col-md-7 bg-c">
     <section class="filters">
     <!-- Add Exchange Modal -->
     <%= render "pages/addevent" %>
@@ -46,7 +46,7 @@
             <%= text_field_tag :search, params[:search], placeholder: "Search Listings", class: "form-control"%>
           </div>
             <div class="col-md-2">
-            <%= submit_tag "GO", :name => nil, class: "f-width button -c1" %>
+            <%= submit_tag "GO", :name => nil, class: "f-width button-d" %>
           <% end %>
           </div>
       </div>

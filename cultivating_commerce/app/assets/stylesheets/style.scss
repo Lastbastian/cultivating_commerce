@@ -2,26 +2,39 @@
 /* COLORS
 /*******************************************/
 
-$c1 : #C2C2C2;
-$text : darken($c1, 40%);
+$bg : #c8c1b2 ; //primary
+$bg2 : lighten($bg, 10%);
+$c1 : lighten($bg, 20%); // light base colour
+$text : darken($c1, 60%);
 $c2 : grey;
-$c3 : #b13537;
-$c4 : #66df9a;
+$c3 : #f7b100;
+$c4 : #d34f4f; // accent colour buttons etc
+
+// orange #f7b100
+// green #b13537;
+// other col #66df9a;
+// pink #d34f4f
+//beige #c8c1b2
+// grey #D0D0D0
 
 
+.bg-c {
+  background-color: $bg;
+}
 
+.bg-c2 {
+  background-color: $bg2;
+}
 
 .bg-c1{
   background-color: $c1;
 }
 
 .bg-c1-light{
-  background-color: lighten($c1, 20%);
+  background-color: lighten($bg, 15%);
 }
 
-.bg-c2{
-  background-color: $c2;
-}
+
 .bg-c3{
   background-color: $c3;
 }
@@ -31,6 +44,8 @@ $c4 : #66df9a;
 .bg-w{
   background-color: white;
 }
+
+
 
 
 .c-c1{
@@ -46,6 +61,9 @@ $c4 : #66df9a;
   color: $c4;
 }
 .c-w{
+  color: white;
+}
+.c-w a{
   color: white;
 }
 
@@ -171,9 +189,9 @@ a:hover
 
 
 .button {
-  border:2px solid $c1;
+  border:2px solid $c4;
   cursor:pointer;
-  color:$c1;
+  color:$c4;
   background-color: white;
   font-size:17px;
   padding:8px;
@@ -188,11 +206,38 @@ a:hover
   border:2px solid $c4;
 }
 .button a {
-  color: $c2;
+  color: $c4;
 }
  .button:hover a{
   color: white;
 }
+
+
+// dark button
+.button-d {
+  border:2px solid $c4;
+  cursor:pointer;
+  color:white;
+  background-color: $c4;
+  font-size:17px;
+  padding:8px;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+  padding: 10px 20px;
+  }
+  .button-d:hover{
+  background-color: white;
+  color: $c4;
+  border:2px solid $c4;
+}
+.button-d a {
+  color: white;
+}
+ .button-d:hover a{
+  color: $c4;
+}
+
 
 
 
@@ -220,6 +265,9 @@ height: 100vh;
 height: 100vh;
 }
 
+.listings {
+  height: 1500px;
+}
 /******************************************
 /* NAV
 /*******************************************/
@@ -256,7 +304,7 @@ header {
   // border: 1px $c1 solid;
     z-index: 1000;
   :hover {
-    border: 1px $c1 solid;
+    border: 2px $c4 solid;
     border-radius:50px;
   }
 }
@@ -330,6 +378,14 @@ margin-left: 0;
 margin-right: 0;
 }
 
+.listing-front {
+  height: 550px;
+}
+
+.height {
+  height: 550px;
+}
+
 /******************************************
 /* USER
 /*******************************************/
@@ -342,10 +398,10 @@ width: 100%;
 
 .test {
 width: 100%;
-height: 250px;
-background-color: $c3;
+height: 300px;
+background-color: $c4;
  &:hover {
-  background-color: lighten($c3, 10%);
+  background-color: lighten($c4, 10%);
   }
 }
 
@@ -355,7 +411,7 @@ background-color: $c3;
 
 .user {
   padding: 0 30px;
-  height: 3000px;
+  height: 1500px;
 }
 /******************************************
 /* ADD PRODUCT
@@ -386,7 +442,7 @@ border: 0;
 font-size: 2em;
 border-radius: 0;
 height: 47px;
-background-color: lighten($c1, 20%);
+background-color: lighten($bg, 15%);;
 }
 
 input {
@@ -405,7 +461,7 @@ height: 34px;
 font-size: 16px;
 padding-left: 4px;
 // color when you type
-background-color: lighten($c1, 20%);
+background-color: lighten($bg, 15%);;
 border: none;
 border-radius: 0;
 }
@@ -432,47 +488,5 @@ padding-bottom: 0px;
 border-bottom: 0px solid #e5e5e5;
 min-height: 16.42857px;
 }
-
-
-// .floating-label-form-group input, .floating-label-form-group textarea {
-// // z-index: 1;
-// // position: relative;
-// // padding-right: 0;
-// // padding-left: 0;
-// border: 0;
-// // border-radius: 0;
-// font-size: 2em;
-// // background: 0 0;
-// box-shadow: none!important;
-// // resize: none;
-// }
-
-// .floating-label-form-group {
-// position: relative;
-// margin-bottom: 0;
-// padding-bottom: .5em;
-// border-bottom: 2px solid $c1;
-// }
-
-// .form-control, input {
-// border-width: 2px;
-// -webkit-box-shadow: none;
-// box-shadow: none;
-// }
-
-// .form-control {
-// display: block;
-// width: 100%;
-// height: 43px;
-// padding: 10px 15px;
-// line-height: 1.42857143;
-// transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-// }
-
-
-
-// input, button, select, textarea {
-// font-family: inherit;
-// }
 
 
