@@ -39,7 +39,8 @@
               <ul>
                 <li class="exchange">
                     <% l.user.hosted_events.each do |e| %>
-                      <h3><%= e.title %></h3>
+                    <!-- ADD PIN NUMBER HERE -->
+                      <h3>1. <%= e.title %></h3>
                       <p><%= e.time %> on <%= e.date %></p>
                       <p><%= e.description %></p>
                       <p><%= e.address_line_1 %> <%= e.city %></p>
@@ -52,7 +53,8 @@
                   <li class="exchange">
                     <% l.user.events.each do |e| %>
                     <hr/>
-                      <h3><%= e.title %></h3>
+                     <!-- ADD PIN NUMBER HERE -->
+                      <h3>1. <%= e.title %></h3>
                       <p><%= e.time %> on <%= e.date %></p>
                       <p><%= e.description %></p>
                       <p><%= e.address_line_1 %> <%= e.city %></p>
