@@ -173,7 +173,7 @@ a:hover
 .button {
   border:2px solid $c1;
   cursor:pointer;
-  color:$c2;
+  color:$c1;
   background-color: white;
   font-size:17px;
   padding:8px;
@@ -183,8 +183,8 @@ a:hover
   padding: 10px 20px;
   }
   .button:hover{
-    background: $c4;
-  color: $c4;
+  background-color: $c4;
+  color: white;
   border:2px solid $c4;
 }
 .button a {
@@ -385,7 +385,7 @@ box-shadow: none!important;
 border: 0;
 font-size: 2em;
 border-radius: 0;
-height: 41px;
+height: 47px;
 background-color: lighten($c1, 20%);
 }
 
