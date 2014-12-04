@@ -18,9 +18,14 @@ class PagesController < ApplicationController
     elsif !user_signed_in?
       @listings = Listing.search(params[:search]).order("created_at DESC")
       users = @listings.map { |l| l.user }
-      events_unsorted = users.map { |u| u.events }.uniq.flatten
+      @events = users.map { |u| u.events }.uniq.flatten
+
+      @hash = Gmaps4rails.build_markers(@events) do |event, marker|
+        marker.lat event.latitude
+        marker.lng event.longitude
+        marker.infowindow render_to_string(:partial => "/events/show", :locals => { :object => event})
+      end
     else
-      params[:search] && user_signed_in?
       counter = 0
       @listings = Listing.search(params[:search]).order("created_at DESC")
       users = @listings.map { |l| l.user }
