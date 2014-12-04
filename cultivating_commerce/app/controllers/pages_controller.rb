@@ -36,12 +36,13 @@ class PagesController < ApplicationController
       @hash = Gmaps4rails.build_markers(@events) do |event, marker|
         counter +=1
         if(event.hosts.first == current_user)
-          color = "00FFFF"
+          color = "f7b100"
         elsif(event.participants.include?(current_user))
-          color = "98fb98"
+          color = "d34f4f"
         else
-          color = "ff0000"
+          color = "D0D0D0"
         end
+        # CHANGE COLOUR HERE
 
         marker.lat event.latitude
         marker.lng event.longitude
@@ -51,6 +52,7 @@ class PagesController < ApplicationController
         :width   => 32,
         :height  => 32
         })
+        # HOUSE HERE
 
       end
       @hash.push(
