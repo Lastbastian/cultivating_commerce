@@ -13,7 +13,6 @@
 
 //= require jquery
 //= require jquery_ujs
-//= require ../../../vendor/assets/javascripts/list.js
 //= require_tree .
 //= require underscore
 //= require gmaps/google
