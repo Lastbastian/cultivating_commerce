@@ -1,0 +1,225 @@
+  [1m[36m (127.3ms)[0m  [1mDROP DATABASE IF EXISTS "cultivating_commerce_development"[0m
+  [1m[36m (429.2ms)[0m  [1mCREATE DATABASE "cultivating_commerce_development" ENCODING = 'utf8'[0m
+  [1m[36m (27.9ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (3.5ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateUsers (20141127235401)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (23.1ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "first_name" character varying(255), "last_name" character varying(255), "user_name" character varying(255), "email" character varying(255) DEFAULT '' NOT NULL, "address_line_1" character varying(255), "city" character varying(255), "state" character varying(255), "zipcode" character varying(255), "latitude" character varying(255), "longitude" character varying(255), "about" character varying(255), "user_img" character varying(255), "phone" character varying(255), "private_contact" boolean, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (6.5ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20141127235401"]]
+  [1m[36m (6.0ms)[0m  [1mCOMMIT[0m
+Migrating to CreateListings (20141127235440)
+  [1m[35m (6.3ms)[0m  BEGIN
+  [1m[36m (5.3ms)[0m  [1mCREATE TABLE "listings" ("id" serial primary key, "title" character varying(255), "description" character varying(255), "desired" character varying(255), "quantity" character varying(255), "image" character varying(255) DEFAULT 'orange2.jpg', "active" boolean, "item_id" integer, "user_id" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20141127235440"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+Migrating to CreateItems (20141127235817)
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (3.9ms)[0m  [1mCREATE TABLE "items" ("id" serial primary key, "kind" character varying(255), "category" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20141127235817"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+Migrating to CreateEvents (20141128235037)
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (3.0ms)[0m  [1mCREATE TABLE "events" ("id" serial primary key, "address_line_1" character varying(255), "city" character varying(255), "zipcode" character varying(255), "state" character varying(255), "date" date, "time" character varying(255), "title" character varying(255), "description" character varying(255), "image" character varying(255), "latitude" float, "longitude" float, "user_id" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20141128235037"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+Migrating to CreateParticipants (20141129002841)
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (1.6ms)[0m  [1mCREATE TABLE "events_participants" ("id" serial primary key, "participant_id" integer, "event_id" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (1.8ms)[0m  CREATE TABLE "events_hosts" ("id" serial primary key, "host_id" integer, "event_id" integer, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20141129002841"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+Migrating to AddDeviseToUsers (20141129190932)
+  [1m[36m (0.4ms)[0m  [1mBEGIN[0m
+  [1m[35m (5.2ms)[0m  ALTER TABLE "users" ADD COLUMN "encrypted_password" character varying(255) DEFAULT '' NOT NULL
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "users" ADD COLUMN "reset_password_token" character varying(255)[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "users" ADD COLUMN "reset_password_sent_at" timestamp
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "users" ADD COLUMN "remember_created_at" timestamp[0m
+  [1m[35m (20.9ms)[0m  ALTER TABLE "users" ADD COLUMN "sign_in_count" integer DEFAULT 0 NOT NULL
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "users" ADD COLUMN "current_sign_in_at" timestamp[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "users" ADD COLUMN "last_sign_in_at" timestamp
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "users" ADD COLUMN "current_sign_in_ip" inet[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "users" ADD COLUMN "last_sign_in_ip" inet
+  [1m[36m (0.9ms)[0m  [1mCREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  [1m[35m (0.9ms)[0m  CREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users"  ("reset_password_token")
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20141129190932"]]
+  [1m[35m (1.3ms)[0m  COMMIT
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (1.3ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'peacethrubeats@gmail.com' LIMIT 1[0m
+  [1m[35mSQL (18.6ms)[0m  INSERT INTO "users" ("about", "address_line_1", "created_at", "email", "encrypted_password", "first_name", "last_name", "latitude", "longitude", "phone", "private_contact", "updated_at", "user_img", "user_name", "zipcode") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING "id"  [["about", ""], ["address_line_1", "277A Duncan st."], ["created_at", "2014-12-05 06:44:27.976480"], ["email", "peacethrubeats@gmail.com"], ["encrypted_password", "$2a$10$sl9eZcdoTR/eL0AHMvhTgOhHl5MrvYETlrwL3tJxW.iB6E/md.pyW"], ["first_name", "Chris"], ["last_name", "Bastian"], ["latitude", 37.745885], ["longitude", -122.426345], ["phone", "510-717-7373"], ["private_contact", "t"], ["updated_at", "2014-12-05 06:44:27.976480"], ["user_img", "chris.jpg"], ["user_name", "chrisb"], ["zipcode", "94131"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'osmanisalso@gmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("about", "address_line_1", "created_at", "email", "encrypted_password", "first_name", "last_name", "phone", "private_contact", "updated_at", "user_img", "user_name", "zipcode") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"  [["about", ""], ["address_line_1", ""], ["created_at", "2014-12-05 06:44:28.218073"], ["email", "osmanisalso@gmail.com"], ["encrypted_password", "$2a$10$OUq3l5ybgGu4O5VBQo25e.f94PS56m2kTlVS.o6CyxDr1VNLLjaVO"], ["first_name", "Osman"], ["last_name", "Afridi"], ["phone", "(510) 447-3200"], ["private_contact", "t"], ["updated_at", "2014-12-05 06:44:28.218073"], ["user_img", "osman.jpg"], ["user_name", "osmana"], ["zipcode", ""]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'marlonjfrausto@gmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("about", "address_line_1", "created_at", "email", "encrypted_password", "first_name", "last_name", "phone", "private_contact", "updated_at", "user_img", "user_name", "zipcode") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"  [["about", ""], ["address_line_1", ""], ["created_at", "2014-12-05 06:44:28.432489"], ["email", "marlonjfrausto@gmail.com"], ["encrypted_password", "$2a$10$l2qJOqfWLN9Nqr04GOHdvuv8Nm5rp6hdKW.hi1GWKLyD6wf.o72va"], ["first_name", "Marlon"], ["last_name", "Frausto"], ["phone", "(619) 373-6451"], ["private_contact", "t"], ["updated_at", "2014-12-05 06:44:28.432489"], ["user_img", "murat.jpg"], ["user_name", "marlonf"], ["zipcode", ""]]
+  [1m[36m (8.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'christinevallaure@gmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "users" ("about", "address_line_1", "created_at", "email", "encrypted_password", "first_name", "last_name", "phone", "private_contact", "updated_at", "user_img", "user_name", "zipcode") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"  [["about", ""], ["address_line_1", ""], ["created_at", "2014-12-05 06:44:28.636191"], ["email", "christinevallaure@gmail.com"], ["encrypted_password", "$2a$10$8iEHSE01kdK67F54A6Rf9O10UyLebc3aISm.rM/3bz8C03XW3ZvZO"], ["first_name", "Christine"], ["last_name", "Vallaure"], ["phone", "555-555-5555"], ["private_contact", "t"], ["updated_at", "2014-12-05 06:44:28.636191"], ["user_img", "christine.jpg"], ["user_name", "christinev"], ["zipcode", ""]]
+  [1m[36m (8.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (1.0ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'noble_windler@botsfordromaguera.com' LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "users" ("about", "address_line_1", "created_at", "email", "encrypted_password", "first_name", "last_name", "latitude", "longitude", "phone", "private_contact", "updated_at", "user_img", "user_name", "zipcode") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING "id"  [["about", "Dolor qui aspernatur itaque fugit quis."], ["address_line_1", "Kennedy Via"], ["created_at", "2014-12-05 06:44:29.525048"], ["email", "noble_windler@botsfordromaguera.com"], ["encrypted_password", "$2a$10$cNcZd89hvxjUzBuxWsoOFOxOLXpKRkz4z2v2yLAsoc1zGFaT4r2r6"], ["first_name", "Cedrick"], ["last_name", "Mayert"], ["latitude", 44.2317375], ["longitude", -79.3954928], ["phone", "316-360-2085"], ["private_contact", "f"], ["updated_at", "2014-12-05 06:44:29.525048"], ["user_img", "user2"], ["user_name", "chadd"], ["zipcode", "23655-8171"]]
+  [1m[36m (7.8ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'vicky.price@schiller.com' LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "users" ("about", "address_line_1", "created_at", "email", "encrypted_password", "first_name", "last_name", "latitude", "longitude", "phone", "private_contact", "updated_at", "user_img", "user_name", "zipcode") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING "id"  [["about", "Quas consequatur rerum aut aliquid iusto nobis nisi praesentium."], ["address_line_1", "Ona Island"], ["created_at", "2014-12-05 06:44:29.796693"], ["email", "vicky.price@schiller.com"], ["encrypted_password", "$2a$10$vqPcfzLE66QUKTkJJ78MK.CBIGurxLAV93EA.KgkpO17tAzWl2jKS"], ["first_name", "Elmer"], ["last_name", "Zboncak"], ["latitude", 30.2801476], ["longitude", -87.53585989999999], ["phone", "822.249.2320 x9415"], ["private_contact", "f"], ["updated_at", "2014-12-05 06:44:29.796693"], ["user_img", "user2"], ["user_name", "ali.jacobi"], ["zipcode", "26104"]]
+  [1m[36m (8.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'elvie.emmerich@reynolds.net' LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "users" ("about", "address_line_1", "created_at", "email", "encrypted_password", "first_name", "last_name", "latitude", "longitude", "phone", "private_contact", "updated_at", "user_img", "user_name", "zipcode") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING "id"  [["about", "Aliquam nihil mollitia repellat id iusto quia odit voluptas."], ["address_line_1", "Mohammed Causeway"], ["created_at", "2014-12-05 06:44:30.022139"], ["email", "elvie.emmerich@reynolds.net"], ["encrypted_password", "$2a$10$3A5R/fsFJxJsIDGoJosnBOxU8MpZpsLYt4xMzQ4YeBKjFmhjwgUmq"], ["first_name", "Viviane"], ["last_name", "Eichmann"], ["latitude", 24.8561042], ["longitude", 67.09020850000002], ["phone", "1-992-513-1965"], ["private_contact", "f"], ["updated_at", "2014-12-05 06:44:30.022139"], ["user_img", "user2"], ["user_name", "adriel.senger"], ["zipcode", "69634"]]
+  [1m[36m (8.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'holden@robel.com' LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "users" ("about", "address_line_1", "created_at", "email", "encrypted_password", "first_name", "last_name", "latitude", "longitude", "phone", "private_contact", "updated_at", "user_img", "user_name", "zipcode") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING "id"  [["about", "Dolore ducimus eligendi dolor ab quam est."], ["address_line_1", "Larkin Knoll"], ["created_at", "2014-12-05 06:44:30.258866"], ["email", "holden@robel.com"], ["encrypted_password", "$2a$10$3gffC3jIZ1ksatsYmsNjfejw5EXyxux.QAtFPXEyifE.yfVJIUGs."], ["first_name", "Kiara"], ["last_name", "Wyman"], ["latitude", 47.2254542], ["longitude", -122.4467834], ["phone", "(193) 055-6158"], ["private_contact", "f"], ["updated_at", "2014-12-05 06:44:30.258866"], ["user_img", "user2"], ["user_name", "raina"], ["zipcode", "98418-7884"]]
+  [1m[36m (8.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mUser Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'billy.douglas@oconnellrunolfsdottir.net' LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "users" ("about", "address_line_1", "created_at", "email", "encrypted_password", "first_name", "last_name", "phone", "private_contact", "updated_at", "user_img", "user_name", "zipcode") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"  [["about", "Error sequi quo debitis vitae qui veniam quo."], ["address_line_1", "Deonte Tunnel"], ["created_at", "2014-12-05 06:44:30.487259"], ["email", "billy.douglas@oconnellrunolfsdottir.net"], ["encrypted_password", "$2a$10$6jfNhKkJlyvWMF.Lmi8x9OEzBXFbp7r70oyy8l0SwrGjgQN/giV22"], ["first_name", "Helene"], ["last_name", "Torp"], ["phone", "(714) 417-6498 x0219"], ["private_contact", "f"], ["updated_at", "2014-12-05 06:44:30.487259"], ["user_img", "user2"], ["user_name", "westley_willms"], ["zipcode", "60868"]]
+  [1m[36m (8.0ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'madonna@mraz.info' LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "users" ("about", "address_line_1", "created_at", "email", "encrypted_password", "first_name", "last_name", "latitude", "longitude", "phone", "private_contact", "updated_at", "user_img", "user_name", "zipcode") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING "id"  [["about", "Ipsam molestias non dolorum."], ["address_line_1", "Rutherford Trace"], ["created_at", "2014-12-05 06:44:30.736663"], ["email", "madonna@mraz.info"], ["encrypted_password", "$2a$10$9mXRBB8WnwT.K02Wt9lxoOUCPwrgjuFuMV.uGTuQ0ayGfBnIxfR0q"], ["first_name", "Joanne"], ["last_name", "Towne"], ["latitude", 35.3261235], ["longitude", -81.8614489], ["phone", "294.959.5441 x975"], ["private_contact", "f"], ["updated_at", "2014-12-05 06:44:30.736663"], ["user_img", "user2"], ["user_name", "nayeli.farrell"], ["zipcode", "92325-4298"]]
+  [1m[36m (8.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'jedidiah.emmerich@flatleyjohns.biz' LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "users" ("about", "address_line_1", "created_at", "email", "encrypted_password", "first_name", "last_name", "latitude", "longitude", "phone", "private_contact", "updated_at", "user_img", "user_name", "zipcode") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING "id"  [["about", "Atque ratione ipsa vel ut sed et rerum unde."], ["address_line_1", "Bradtke Track"], ["created_at", "2014-12-05 06:44:30.984017"], ["email", "jedidiah.emmerich@flatleyjohns.biz"], ["encrypted_password", "$2a$10$EHtAfPM4cQ5l5UUiy59Gsuvx/dI5Vy3zprIHOAgx8GgQDoshM3GYi"], ["first_name", "Stanton"], ["last_name", "Farrell"], ["latitude", 46.8548049], ["longitude", -96.85648549999999], ["phone", "649.856.5320 x501"], ["private_contact", "f"], ["updated_at", "2014-12-05 06:44:30.984017"], ["user_img", "user2"], ["user_name", "josianne_turcotte"], ["zipcode", "58125-6271"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'eula@parker.name' LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "users" ("about", "address_line_1", "created_at", "email", "encrypted_password", "first_name", "last_name", "latitude", "longitude", "phone", "private_contact", "updated_at", "user_img", "user_name", "zipcode") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING "id"  [["about", "Blanditiis repellendus iure molestiae et similique accusantium beatae."], ["address_line_1", "Trantow Shores"], ["created_at", "2014-12-05 06:44:31.287734"], ["email", "eula@parker.name"], ["encrypted_password", "$2a$10$cGlMtolyrp4ltaXJ9vL1QuYUt5hl2qY3gRp3YiknzRGnpQKkIkH/y"], ["first_name", "Serenity"], ["last_name", "Abbott"], ["latitude", 41.4566102], ["longitude", -102.3005803], ["phone", "645.808.5991"], ["private_contact", "f"], ["updated_at", "2014-12-05 06:44:31.287734"], ["user_img", "user2"], ["user_name", "leland.steuber"], ["zipcode", "69154"]]
+  [1m[36m (1.0ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'marley@macgyvermetz.name' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("about", "address_line_1", "created_at", "email", "encrypted_password", "first_name", "last_name", "latitude", "longitude", "phone", "private_contact", "updated_at", "user_img", "user_name", "zipcode") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING "id"  [["about", "Officiis deserunt consequatur sequi."], ["address_line_1", "Liza Prairie"], ["created_at", "2014-12-05 06:44:31.542554"], ["email", "marley@macgyvermetz.name"], ["encrypted_password", "$2a$10$EC75FYHek5L0Qb9ofWCECex18e7ng44jk5AI8cMrkt.VgTaeQr8lm"], ["first_name", "Virgil"], ["last_name", "Heidenreich"], ["latitude", 36.0891182], ["longitude", -94.1314586], ["phone", "805-736-5186"], ["private_contact", "f"], ["updated_at", "2014-12-05 06:44:31.542554"], ["user_img", "user2"], ["user_name", "jake.braun"], ["zipcode", "37185"]]
+  [1m[36m (7.7ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'bridie@moriette.name' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("about", "address_line_1", "created_at", "email", "encrypted_password", "first_name", "last_name", "latitude", "longitude", "phone", "private_contact", "updated_at", "user_img", "user_name", "zipcode") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING "id"  [["about", "Quae quisquam et consequatur enim exercitationem numquam voluptatem."], ["address_line_1", "Lilyan Canyon"], ["created_at", "2014-12-05 06:44:31.794604"], ["email", "bridie@moriette.name"], ["encrypted_password", "$2a$10$5IRV0ACSiddsUh05AThHdOdKVtCYX..CY1HE0fRzEWBsjhT6NXpRC"], ["first_name", "Halle"], ["last_name", "Lang"], ["latitude", 33.5608924], ["longitude", -111.9785884], ["phone", "1-823-644-2501"], ["private_contact", "f"], ["updated_at", "2014-12-05 06:44:31.794604"], ["user_img", "user2"], ["user_name", "ellen.vonrueden"], ["zipcode", "68199-6757"]]
+  [1m[36m (7.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "items" ("category", "created_at", "kind", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["category", "i-produce.svg"], ["created_at", "2014-12-05 06:44:31.820416"], ["kind", "Produce"], ["updated_at", "2014-12-05 06:44:31.820416"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "items" ("category", "created_at", "kind", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["category", "i-eggs_dairy.svg"], ["created_at", "2014-12-05 06:44:31.824284"], ["kind", "Eggs and Dairy"], ["updated_at", "2014-12-05 06:44:31.824284"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "items" ("category", "created_at", "kind", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["category", "i-meat_fish.svg"], ["created_at", "2014-12-05 06:44:31.826549"], ["kind", "Meat and Fish"], ["updated_at", "2014-12-05 06:44:31.826549"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "items" ("category", "created_at", "kind", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["category", "i-bakery.svg"], ["created_at", "2014-12-05 06:44:31.828644"], ["kind", "Baked Goods"], ["updated_at", "2014-12-05 06:44:31.828644"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "items" ("category", "created_at", "kind", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["category", "i-pantry.svg"], ["created_at", "2014-12-05 06:44:31.830888"], ["kind", "Pantry"], ["updated_at", "2014-12-05 06:44:31.830888"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "items" ("category", "created_at", "kind", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["category", "i-herbs_spices.svg"], ["created_at", "2014-12-05 06:44:31.833583"], ["kind", "Herbs and Spices"], ["updated_at", "2014-12-05 06:44:31.833583"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (6.6ms)[0m  [1mINSERT INTO "listings" ("active", "created_at", "description", "desired", "image", "item_id", "quantity", "title", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-12-05 06:44:31.875159"], ["description", "Eggs from my city chickens"], ["desired", "apple"], ["image", "egg3.jpg"], ["item_id", 2], ["quantity", "3 dozen"], ["title", "eggs"], ["updated_at", "2014-12-05 06:44:31.875159"], ["user_id", 1]]
+  [1m[35m (6.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "listings" ("active", "created_at", "description", "desired", "image", "item_id", "quantity", "title", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"  [["active", "t"], ["created_at", "2014-12-05 06:44:31.892918"], ["description", "A lot of extra eggs lorem ipsum"], ["desired", "apple"], ["image", "egg1.jpg"], ["item_id", 2], ["quantity", "3 dozen"], ["title", "eggs"], ["updated_at", "2014-12-05 06:44:31.892918"], ["user_id", 1]]
+  [1m[36m (4.7ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "listings" ("active", "created_at", "description", "desired", "image", "item_id", "quantity", "title", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-12-05 06:44:31.901345"], ["description", "Fresh eggs from our farm"], ["desired", "apple"], ["image", "egg2.jpg"], ["item_id", 2], ["quantity", "3 dozen"], ["title", "eggs"], ["updated_at", "2014-12-05 06:44:31.901345"], ["user_id", 1]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "listings" ("active", "created_at", "description", "desired", "item_id", "quantity", "title", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"  [["active", "t"], ["created_at", "2014-12-05 06:44:31.905208"], ["description", "From my two orange trees. Large size."], ["desired", "Lemons"], ["item_id", 1], ["quantity", "3 dozen"], ["title", "oranges"], ["updated_at", "2014-12-05 06:44:31.905208"], ["user_id", 1]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "listings" ("active", "created_at", "description", "desired", "image", "item_id", "quantity", "title", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-12-05 06:44:31.909573"], ["description", "So many lemons for trade."], ["desired", "Avocado"], ["image", "lemon1.jpg"], ["item_id", 1], ["quantity", "100"], ["title", "meyer lemons"], ["updated_at", "2014-12-05 06:44:31.909573"], ["user_id", 2]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "listings" ("active", "created_at", "description", "desired", "image", "item_id", "quantity", "title", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"  [["active", "t"], ["created_at", "2014-12-05 06:44:31.912842"], ["description", "So many lemons for trade."], ["desired", "Avocado"], ["image", "lemon2.jpg"], ["item_id", 1], ["quantity", "100"], ["title", "meyer lemons"], ["updated_at", "2014-12-05 06:44:31.912842"], ["user_id", 2]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "listings" ("active", "created_at", "description", "desired", "image", "item_id", "quantity", "title", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-12-05 06:44:31.916388"], ["description", "So many lemons for trade."], ["desired", "Avocado"], ["image", "lemon3.jpg"], ["item_id", 1], ["quantity", "100"], ["title", "meyer lemons"], ["updated_at", "2014-12-05 06:44:31.916388"], ["user_id", 2]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "listings" ("active", "created_at", "description", "desired", "image", "item_id", "quantity", "title", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"  [["active", "t"], ["created_at", "2014-12-05 06:44:31.920063"], ["description", "So many lemons for trade."], ["desired", "Avocado"], ["image", "lemon4.jpg"], ["item_id", 1], ["quantity", "100"], ["title", "meyer lemons"], ["updated_at", "2014-12-05 06:44:31.920063"], ["user_id", 2]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "listings" ("active", "created_at", "description", "desired", "image", "item_id", "quantity", "title", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-12-05 06:44:31.923482"], ["description", "From my tree"], ["desired", "Eggs"], ["image", "persimmons2.jpg"], ["item_id", 1], ["quantity", "30"], ["title", "persimmons"], ["updated_at", "2014-12-05 06:44:31.923482"], ["user_id", 3]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "listings" ("active", "created_at", "description", "desired", "image", "item_id", "quantity", "title", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"  [["active", "t"], ["created_at", "2014-12-05 06:44:31.926956"], ["description", "I have as many as I need. The rest are for trade."], ["desired", "Eggs"], ["image", "tomatoes1.jpg"], ["item_id", 1], ["quantity", "50"], ["title", "heirloom tomatoes"], ["updated_at", "2014-12-05 06:44:31.926956"], ["user_id", 3]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "listings" ("active", "created_at", "description", "desired", "image", "item_id", "quantity", "title", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-12-05 06:44:31.929612"], ["description", "Extra large. Extra tasty."], ["desired", "Avocado"], ["image", "tomatoes2.jpg"], ["item_id", 1], ["quantity", "20"], ["title", "vine tomatoes"], ["updated_at", "2014-12-05 06:44:31.929612"], ["user_id", 3]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "listings" ("active", "created_at", "description", "desired", "image", "item_id", "quantity", "title", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"  [["active", "t"], ["created_at", "2014-12-05 06:44:31.932373"], ["description", "I have a small behive up north and I bring back honey to trade."], ["desired", "Oranges"], ["image", "honey1.jpg"], ["item_id", 5], ["quantity", "30 jars"], ["title", "honey"], ["updated_at", "2014-12-05 06:44:31.932373"], ["user_id", 4]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "listings" ("active", "created_at", "description", "desired", "image", "item_id", "quantity", "title", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-12-05 06:44:31.934689"], ["description", "I have a small behive up north and I bring back honey to trade."], ["desired", "Oranges"], ["image", "honey2.jpg"], ["item_id", 5], ["quantity", "30 jars"], ["title", "honey"], ["updated_at", "2014-12-05 06:44:31.934689"], ["user_id", 4]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "listings" ("active", "created_at", "description", "desired", "image", "item_id", "quantity", "title", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"  [["active", "t"], ["created_at", "2014-12-05 06:44:31.937093"], ["description", "I have a small behive up north and I bring back honey to trade."], ["desired", "Oranges"], ["image", "honey4.jpg"], ["item_id", 5], ["quantity", "30 jars"], ["title", "honey"], ["updated_at", "2014-12-05 06:44:31.937093"], ["user_id", 4]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "listings" ("active", "created_at", "description", "desired", "image", "item_id", "quantity", "title", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-12-05 06:44:31.939536"], ["description", "I have a small behive up north and I bring back honey to trade."], ["desired", "Oranges"], ["image", "honey6.jpg"], ["item_id", 5], ["quantity", "30 jars"], ["title", "honey"], ["updated_at", "2014-12-05 06:44:31.939536"], ["user_id", 4]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "listings" ("active", "created_at", "description", "desired", "image", "item_id", "quantity", "title", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"  [["active", "t"], ["created_at", "2014-12-05 06:44:31.941940"], ["description", "Haas avocados"], ["desired", "Eggs"], ["image", "avocado.jpg"], ["item_id", 1], ["quantity", "40"], ["title", "avocados"], ["updated_at", "2014-12-05 06:44:31.941940"], ["user_id", 4]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (9.0ms)[0m  [1mINSERT INTO "events" ("address_line_1", "city", "created_at", "description", "image", "latitude", "longitude", "time", "title", "updated_at", "zipcode") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["address_line_1", "590 Dolores St"], ["city", "San Francisco"], ["created_at", "2014-12-05 06:44:32.149234"], ["description", ""], ["image", ""], ["latitude", 37.7595162], ["longitude", -122.4260176], ["time", "9am - 1pm"], ["title", "Delores Park exchange"], ["updated_at", "2014-12-05 06:44:32.149234"], ["zipcode", "94110"]]
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "events_participants" ("created_at", "event_id", "participant_id", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2014-12-05 06:44:32.170152"], ["event_id", 1], ["participant_id", 1], ["updated_at", "2014-12-05 06:44:32.170152"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "events" ("address_line_1", "city", "created_at", "description", "image", "latitude", "longitude", "time", "title", "updated_at", "zipcode") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["address_line_1", "1089 Fulton St"], ["city", "San Francisco"], ["created_at", "2014-12-05 06:44:32.311920"], ["description", "I will be setting up a table and canopy.  Join in if you want."], ["image", ""], ["latitude", 37.7773002], ["longitude", -122.4346831], ["time", "9am - 1pm"], ["title", "Alamo Square Park exchange"], ["updated_at", "2014-12-05 06:44:32.311920"], ["zipcode", "94117"]]
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "events_participants" ("created_at", "event_id", "participant_id", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2014-12-05 06:44:32.316736"], ["event_id", 2], ["participant_id", 1], ["updated_at", "2014-12-05 06:44:32.316736"]]
+  [1m[36m (8.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "events" ("address_line_1", "city", "created_at", "date", "description", "image", "latitude", "longitude", "time", "title", "updated_at", "zipcode") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["address_line_1", "2490 Folsom St"], ["city", "San Francisco"], ["created_at", "2014-12-05 06:44:32.520045"], ["date", "0012-06-14"], ["description", "I can meet here at this time."], ["image", ""], ["latitude", 37.7574577], ["longitude", -122.4145989], ["time", "1pm"], ["title", "Jose Coronado Playground exchange"], ["updated_at", "2014-12-05 06:44:32.520045"], ["zipcode", "94110"]]
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "events_participants" ("created_at", "event_id", "participant_id", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2014-12-05 06:44:32.533993"], ["event_id", 3], ["participant_id", 2], ["updated_at", "2014-12-05 06:44:32.533993"]]
+  [1m[36m (6.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "events" ("address_line_1", "city", "created_at", "description", "image", "latitude", "longitude", "time", "title", "updated_at", "zipcode") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["address_line_1", "2056 Sacramento St"], ["city", "San Francisco"], ["created_at", "2014-12-05 06:44:32.672565"], ["description", "I will setup a table by the tennis courts."], ["image", ""], ["latitude", 37.7907754], ["longitude", -122.4267663], ["time", "10am"], ["title", "Lafayette Park exchange"], ["updated_at", "2014-12-05 06:44:32.672565"], ["zipcode", "94109"]]
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "events_participants" ("created_at", "event_id", "participant_id", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2014-12-05 06:44:32.676196"], ["event_id", 4], ["participant_id", 2], ["updated_at", "2014-12-05 06:44:32.676196"]]
+  [1m[36m (8.2ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "events" ("address_line_1", "city", "created_at", "description", "image", "latitude", "longitude", "time", "title", "updated_at", "zipcode") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["address_line_1", "333 Post St "], ["city", "San Francisco"], ["created_at", "2014-12-05 06:44:32.838794"], ["description", "I have a table and will be setup by"], ["image", ""], ["latitude", 37.7887517], ["longitude", -122.4072216], ["time", "11am"], ["title", "Union Square exchange"], ["updated_at", "2014-12-05 06:44:32.838794"], ["zipcode", "94108"]]
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "events_participants" ("created_at", "event_id", "participant_id", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2014-12-05 06:44:32.842684"], ["event_id", 5], ["participant_id", 3], ["updated_at", "2014-12-05 06:44:32.842684"]]
+  [1m[36m (8.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "events" ("address_line_1", "city", "created_at", "description", "image", "latitude", "longitude", "time", "title", "updated_at", "zipcode") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["address_line_1", "320 Dolores St"], ["city", "San Francisco"], ["created_at", "2014-12-05 06:44:32.993643"], ["description", "My house is nearby and I will be in front of the church for a couple hours on Saturday."], ["image", ""], ["latitude", 37.7641956], ["longitude", -122.4267781], ["time", "9am"], ["title", "Mission Delores exchange"], ["updated_at", "2014-12-05 06:44:32.993643"], ["zipcode", "94110"]]
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "events_participants" ("created_at", "event_id", "participant_id", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2014-12-05 06:44:32.997241"], ["event_id", 6], ["participant_id", 3], ["updated_at", "2014-12-05 06:44:32.997241"]]
+  [1m[36m (8.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "events" ("address_line_1", "city", "created_at", "description", "image", "latitude", "longitude", "time", "title", "updated_at", "zipcode") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["address_line_1", "585 Duboce Ave"], ["city", "San Francisco"], ["created_at", "2014-12-05 06:44:33.143008"], ["description", "I will be setup right by the MUNI on/off ramp."], ["image", ""], ["latitude", 37.7691079], ["longitude", -122.433172], ["time", "1pm"], ["title", "Duboce Park exchange"], ["updated_at", "2014-12-05 06:44:33.143008"], ["zipcode", "94117"]]
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "events_participants" ("created_at", "event_id", "participant_id", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2014-12-05 06:44:33.146504"], ["event_id", 7], ["participant_id", 4], ["updated_at", "2014-12-05 06:44:33.146504"]]
+  [1m[36m (8.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "events_participants" ("created_at", "event_id", "participant_id", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2014-12-05 06:44:33.157678"], ["event_id", 4], ["participant_id", 1], ["updated_at", "2014-12-05 06:44:33.157678"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "events_participants" ("created_at", "event_id", "participant_id", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2014-12-05 06:44:33.160459"], ["event_id", 3], ["participant_id", 2], ["updated_at", "2014-12-05 06:44:33.160459"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "events_participants" ("created_at", "event_id", "participant_id", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2014-12-05 06:44:33.163252"], ["event_id", 2], ["participant_id", 3], ["updated_at", "2014-12-05 06:44:33.163252"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "events_participants" ("created_at", "event_id", "participant_id", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2014-12-05 06:44:33.165875"], ["event_id", 1], ["participant_id", 4], ["updated_at", "2014-12-05 06:44:33.165875"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "events_participants" ("created_at", "event_id", "participant_id", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2014-12-05 06:44:33.168507"], ["event_id", 5], ["participant_id", 4], ["updated_at", "2014-12-05 06:44:33.168507"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "events_participants" ("created_at", "event_id", "participant_id", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2014-12-05 06:44:33.171090"], ["event_id", 5], ["participant_id", 5], ["updated_at", "2014-12-05 06:44:33.171090"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "events_participants" ("created_at", "event_id", "participant_id", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2014-12-05 06:44:33.173862"], ["event_id", 6], ["participant_id", 6], ["updated_at", "2014-12-05 06:44:33.173862"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "events_participants" ("created_at", "event_id", "participant_id", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2014-12-05 06:44:33.176557"], ["event_id", 6], ["participant_id", 1], ["updated_at", "2014-12-05 06:44:33.176557"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "events_participants" ("created_at", "event_id", "participant_id", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2014-12-05 06:44:33.179193"], ["event_id", 6], ["participant_id", 2], ["updated_at", "2014-12-05 06:44:33.179193"]]
+  [1m[35m (0.4ms)[0m  COMMIT
