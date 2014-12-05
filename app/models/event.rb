@@ -2,7 +2,7 @@ ZIP_CODE_REG_EX = %r{\d{5}(-\d{4})?}
 
 
 class Event < ActiveRecord::Base
-  attr_accessor :distance
+  attr_accessor :distance, :counter
 
   geocoded_by :full_street_address
   after_validation :geocode

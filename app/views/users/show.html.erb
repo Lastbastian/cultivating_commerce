@@ -67,7 +67,7 @@
 	<% end %>
 	<ul class="listings">
 		<% if @user.listings && !@user.listings.empty? %>
-			<% @user.listings.order(:created_at).each do |l| %>
+			<% @user.listings.order(created_at: :desc).each do |l| %>
 				<%= render 'listing', l: l %>
 			<% end %>
 		<% end %>

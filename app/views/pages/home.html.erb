@@ -55,9 +55,7 @@
     <section class="listings-section">
         <ul class="listings" id="all-listings ">
           <% if @listings && !@listings.empty? %>
-            <% @listings.each do |l| %>
-              <%= render 'listing', l: l %>
-            <% end %>
+            <%= render(@listings, as: :l, locals: {counter: @counter}) %>            
           <% else %>
           <h2 class="p-tb text-center c-c3 bold xl">
           SORRY, NOBODY IS SHARING THIS,<br> TRY ANOTHER ONE</h2>
