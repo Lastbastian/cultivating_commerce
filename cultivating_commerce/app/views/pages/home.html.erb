@@ -14,7 +14,7 @@
   <% end %>
 </section>
 
-  <div class="page-right col-md-7 bg-c">
+  <div class="page-right col-md-7 bg-c" >
     <section class="filters">
     <!-- Add Exchange Modal -->
     <%= render "pages/addevent" %>
@@ -28,8 +28,8 @@
           <ul class="type-icons text-center">
           <% @items.each do |item| %>
             <!-- will be created dynamically -->
-            <li class="type-icon bg-c1-light m-lr inl">
-              <%= image_tag item.category, alt: "item-category", class: "" %>
+            <li class="type-icon sort bg-c1-light m-lr inl <%="filter-#{item.id}"%> ">
+              <%= image_tag item.category, alt: "item-category", class: ""%>
             </li>
           <% end %>
           </ul>
@@ -53,7 +53,7 @@
     </section>
 
     <section class="listings-section">
-        <ul class="listings">
+        <ul class="listings" id="all-listings ">
           <% if @listings && !@listings.empty? %>
             <% @listings.each do |l| %>
               <%= render 'listing', l: l %>
