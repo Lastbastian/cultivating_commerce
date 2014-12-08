@@ -46,7 +46,7 @@ group :development do
   gem 'guard-rspec'
   gem 'guard-livereload'
   gem "rack-livereload"
-  gem 'better_errors'
+  # gem 'better_errors'
 end
 
 group :production do
