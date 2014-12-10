@@ -3,7 +3,7 @@ class EventsController < ApplicationController
     @event = Event.new
   end
 
-  def create #create a hosted event
+  def create
     @event = Event.new(event_params)
     @event.hosts << current_user
     if @event.save
