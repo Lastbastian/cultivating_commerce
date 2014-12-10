@@ -30,6 +30,7 @@ group :test, :development do
   gem 'faker'
   gem 'pry-rails'
   gem 'rspec-rails'
+  gem "spring"
 end
 
 group :test do
@@ -40,9 +41,9 @@ group :test do
   gem 'shoulda-matchers', require: false
 end
 
-group :development do
-  gem 'spring'
+group :development do  
   gem 'pry'
+  gem "spring-commands-rspec"
   gem 'guard'
   gem 'guard-rspec'
   gem 'guard-livereload'
